@@ -24,7 +24,6 @@ def get_choices():
 # choices is defined as a dictionary comprising of key value pairs 
 # the key is defined as player and computer with the value of player_choice
 # and computer_choice respectively 
-
 #---------------------------------
 # Now need to define the rulesets underwhich computer or player wins 
 
@@ -49,39 +48,26 @@ def check_win (player, computer):
             return "You lose"
 
 # check_win is the function and the inputs are player and computer
+# data are called arguements and the arguements this function receives
+# are the player and computer inputs 
 
-    
+# Note Parenthesis () contains arguements of the function being player 
+# and computer above
+
+# F strings used above (concatenate string could also be used) to print
+# You chose and Computer chose with the player and computer variables
+
+# ----------------------
+# Now we have functions defined above with ruleset of winning and inputs into
+# programme we need to return the result in the command window
+
 choices = get_choices ()
 result = check_win (choices["player"], choices["computer"])
 print (result)
 
-# this is going to call check win with rock instead of player and paper instead 
-# of computer 
-# whenever reference player_choice, code automatically replaces rock
-
-
-
-# else and elif statements - else if is a combination of if and else statements 
-# elif - looks at the if conditions then move onto elif to consider if statement within
-# else statement 
-#    age = 20 
-#    if age >= 18: 
-#        print("adult")
-#    elif age > 12:
-#        print("teen")
-#    elif age > 1:
-#        print("child")
-#    else:
-#        print("baby") 
-# can also check for two conditions at once 
-
-# Refactoring is the process of resturcturing code whilst keeping original functionality 
-# common to refactor code to make it simpler or more understandable @ a quick glance
-# nested if statement makes code more understandable at a quick glance 
-# can put an if inside another if elif or else statement
-
-# note once you return something, the rest of the code in a function does not run 
-# so where something is place is sequential to this return statement
-
-# placement of indentations in programming matter - driving sequence of functions 
-# and order of which they are executed in 
+# choices is allocated as output from get_choices function
+# result is the output of the check_win function where the input to
+# this function is choices of the player and the computer from the 
+# get-choices output 
+# remember player and computer are the keys and player_choice/ computer_choice 
+# are the values associated to these keys
