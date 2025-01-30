@@ -118,12 +118,14 @@ print (dinner)
    # print("You chose" + player + "computer chose" + computer)
 ```
 
- quite often in programming there's multiple ways to do the same thing 
- another option is called f-strings 
- f-strings allows you to make strings with other variables and python code
+Note, quite often in programming there's multiple ways to do the same thing - another option is called f-strings. F-strings allows you to make strings with other variables and python code
 
- else and elif statements - else if is a combination of if and else statements 
- elif - looks at the if conditions then move onto elif to consider if statement within
+### IF, Elseif, Elif Programming
+
+- else and elif statements - else if is a combination of if and else statements 
+-elif - looks at the if conditions then move onto elif to consider if statement within
+ 
+```
  else statement 
     age = 20 
     if age >= 18: 
@@ -134,12 +136,17 @@ print (dinner)
         print("child")
     else:
         print("baby") 
- can also check for two conditions at once 
+```
+Note, can also check for two conditions at once 
+
+### Refactoring 
+
  Refactoring is the process of resturcturing code whilst keeping original functionality 
  common to refactor code to make it simpler or more understandable @ a quick glance
  nested if statement makes code more understandable at a quick glance 
- can put an if inside another if elif or else statement
- note once you return something, the rest of the code in a function does not run 
- so where something is place is sequential to this return statement
- placement of indentations in programming matter - driving sequence of functions 
- and order of which they are executed in 
+
+_Example_: can put an if inside another if elif or else statement
+
+### Sequencing of a Programme
+
+Note, once you return something, the rest of the code in a function does not run, so where something is place is sequential to this return statement, placement of indentations in programming matter - driving sequence of functions and order of which they are executed in 
