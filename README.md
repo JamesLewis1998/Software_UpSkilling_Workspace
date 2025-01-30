@@ -1,19 +1,29 @@
 # Workspace Overview
 
-Repository to contain all work conducted within Fleetcode and Python Training.
+Repository to contain all work conducted within Fleetcode and Python Training. Contents includes: 
+
+1. LeetCode Programming Practice
+2. Youtube Python for Beginners 
+3. IIY Advanced Training Course in Python
+4. _Sequencing in PlantUML for Adhoc Arch work_ 
 
 ## Key Learning Points from RPS Example
 
+Quick Notes from initial introduction:
+
 - = means assign operator 
-- string is a word or set of variables around it
+- A string is a sequence of characters used to represent text
+
+***The Importance of Brackets:***
+
+They can denote a list, a dictionary, an array, or a tuple, and they're also used in function and method invocations. Misuse of brackets often leads to syntax errors and bugs.
 
 ### Indentation 
 
-1. note indentation is important - any line of code indented same amount is considered to be in that function
+1. Indentation is important - any line of code indented same amount is considered to be in that function
+2. Return indicates whats returned when function get_choices is called (for example)
 
-2. return indicates whats returned when function get_choices is called 
-
-#### EXAMPLE ONE: GREETING TO CONSOLE
+**Greeting to Console Example**
 
 ```
   def greeting (): 
@@ -21,43 +31,68 @@ Repository to contain all work conducted within Fleetcode and Python Training.
    response = greeting ()
    print (response)
 ```
-
-- note in python you do not need to put anything at the end of each line 
+- def in python is used to define a function, it is placed before a function name that is provided by the user to create a user-defined function
+- In Python, a function is a logical unit of code containing a sequence of statements indented under a name given using the “def” keyword
+- In python you do not need to put anything at the end of each line 
 - print response returns to console
 
 ### Dictionaries 
-1. Dictionaires - in python they are used to store data values in key value pairs
 
-#### Example
+A dictionary is a data structure that maps one value to another - kind of like how an English dictionary maps a word to its definition.
 
-Example below -curly braces begining and end with key value pairs separated by comas 
- dict = {"name": "beau", "colour" : "blue"}
- Key is name and colour, value is beau and blue 
- value can be a variable eg could set to choices 
- surround by quotation marks its a string
- In example above can define dictionary name by typing name instead of dict and 
- adding curly brackets in
+1. Dictionaries - in python they are used to store data values in key value pairs
+2. Dictionaries denoted by "dict" 
+3. Curly braces begining and end with key value pairs separated by comas
+4. Curly braces indicates at code level is used to define a Dictionary
+
+**Dictionary Example**
+
+Example shown below to illustrate dict definition, key value pairs and mapping between key and value:
+
+```
+dict = {"name": "beau", "colour" : "blue"}
+```
+- Key is name and colour, value is beau and blue 
+- value can be a variable eg could set to choices 
+- surround by quotation marks its a string
+- In example above can define dictionary name by typing name instead of dict and 
+ adding curly brackets in - the curly brackets are the indicators of the dictionary definition in code, not the word "dict"
 
 ### Inputs 
- Inputs are used to define inputs from the user to get inputs from them 
-whatever the person enters in this field gets saved against the variable in
- programme
+
+Inputs are used to define inputs from the user to get inputs from them 
+whatever the person enters in this field gets saved against the variable in programme
+
+**Inputs Example**
+
+Example below illustrates defining an input as "Enter A Number" and printing a return in the console as "You Entered:", the displaying the number
+
+```
+number = input("Enter a value: ")  
+print("You entered:",number)  
+```
 
 ### Python Libraries 
 
- Python libraries are a set of useful functions so you don't have to learn 
+ 1. Python libraries are a set of useful functions so you don't have to learn 
  how to write python from scratch
- with basic pyhton its hard to get a programme to do something randomly
+ 2. With basic pyhton its hard to get a programme to do something randomly
  import statements used to import libraries and usually put at top of programme
 
 ### Lists
 
- list in pyhton used to store multiple items in a single variable
- Brackets are important in programming to ilsturate what the functions pruporse is
-    food = ["pizza", "burger", "pasta"]
-    dinner =random.choice(food)
-    print (dinner)
+Lists are used to store multiple items in a single variable. Lists are one of 4 built-in data types in Python used to store collections of data, the other 3 are Tuple, Set, and Dictionary, all with different qualities and usage.
 
+- List in pyhton used to store multiple items in a single variable
+- Brackets are important in programming to ilsturate what the parameters purporse is
+
+**Lists Example**
+
+```
+food = ["pizza", "burger", "pasta"]
+dinner =random.choice(food)
+print (dinner)
+```
 ### Functions
 
  functions can recieve arguments when they are called, data are called arguments
