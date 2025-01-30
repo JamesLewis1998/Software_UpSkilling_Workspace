@@ -95,9 +95,11 @@ print (dinner)
 ```
 ### Functions
 
- functions can recieve arguments when they are called, data are called arguments
- can put things in parenthesis to enable function to pass data via new variables 
- if statement will allow a function to do different things depending on certain 
+**Functions** in Python. You use functions in programming to bundle a set of instructions that you want to use repeatedly or that, because of their complexity, are better self-contained in a sub-program and called when needed. That means that a function is a piece of code written to carry out a specified task.
+
+ 1. Functions can recieve arguments when they are called, data are called arguments
+ 2. You can put things in parenthesis to enable function to pass data via new variables 
+ 3. "if" statement will allow a function to do different things depending on certain 
  conditions - see indetentations to understand contents of if statements
 
 ### EQUAL Signs
@@ -119,3 +121,25 @@ print (dinner)
  quite often in programming there's multiple ways to do the same thing 
  another option is called f-strings 
  f-strings allows you to make strings with other variables and python code
+
+ else and elif statements - else if is a combination of if and else statements 
+ elif - looks at the if conditions then move onto elif to consider if statement within
+ else statement 
+    age = 20 
+    if age >= 18: 
+        print("adult")
+    elif age > 12:
+        print("teen")
+    elif age > 1:
+        print("child")
+    else:
+        print("baby") 
+ can also check for two conditions at once 
+ Refactoring is the process of resturcturing code whilst keeping original functionality 
+ common to refactor code to make it simpler or more understandable @ a quick glance
+ nested if statement makes code more understandable at a quick glance 
+ can put an if inside another if elif or else statement
+ note once you return something, the rest of the code in a function does not run 
+ so where something is place is sequential to this return statement
+ placement of indentations in programming matter - driving sequence of functions 
+ and order of which they are executed in 
