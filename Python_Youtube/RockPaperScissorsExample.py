@@ -1,12 +1,31 @@
-# RockPaperScissors Programming Example
+#RockPaperScissors Programming Example
+
 import random
+#Loads the random module, which contains a number of random number generation-related functions
+
+# ----------------------------
+# Need to define dictionary of potential outcomes for player and computer
 
 def get_choices():
     options = ["rock", "paper", "scissors"]
-    player_choice = input("Enter a choice (rock, paper, scissors:")
+    player_choice = input("Enter a choice rock, paper, scissors:")
     computer_choice = random.choice (options)
     choices = {"player": player_choice, "computer" : computer_choice}
     return choices
+
+# get_choices is the Function above 
+# input above is used for user to define RPS input in console
+# name of input assigned to "player_choice"
+# options defines a list of potential choices for player and computer 
+
+# random.choice calls on the imported module to assign random variable to computer_choice
+# based on the options variable 
+
+# choices is defined as a dictionary comprising of key value pairs 
+# the key is defined as player and computer with the value of player_choice
+# and computer_choice respectively 
+#---------------------------------
+# Now need to define the rulesets underwhich computer or player wins 
 
 def check_win (player, computer):
     print(f"You chose {player}, Computer chose {computer}")
@@ -27,94 +46,28 @@ def check_win (player, computer):
             return "Player wins"
         else:
             return "You lose"
-    
+
+# check_win is the function and the inputs are player and computer
+# data are called arguements and the arguements this function receives
+# are the player and computer inputs 
+
+# Note Parenthesis () contains arguements of the function being player 
+# and computer above
+
+# F strings used above (concatenate string could also be used) to print
+# You chose and Computer chose with the player and computer variables
+
+# ----------------------
+# Now we have functions defined above with ruleset of winning and inputs into
+# programme we need to return the result in the command window
+
 choices = get_choices ()
 result = check_win (choices["player"], choices["computer"])
 print (result)
 
-# this is going to call check win with rock instead of player and paper instead 
-# of computer 
-    
-# = means assign operator 
-# string is a word or set of variables around it
-# whenever reference player_choice, code automatically replaces rock
-
-# note indentation is important - any line of code indented same amount is 
-# considered to be in that function
-# return indicates whats returned when function get_choices is called 
-
-# EXAMPLE ONE: GREETING TO CONSOLE
-#   def greeting (): 
-#       return "hi"
-#   response = greeting ()
-#   print (response)
-# note in python you do not need to put anything at the end of each line 
-# print response returns to console
-
-# Dictionaires - in python they are used to store data values in key value pairs
-# Example below -curly braces begining and end with key value pairs separated by comas 
-# dict = {"name": "beau", "colour" : "blue"}
-# Key is name and colour, value is beau and blue 
-# value can be a variable eg could set to choices 
-# surround by quotation marks its a string
-# In example above can define dictionary name by typing name instead of dict and 
-# adding curly brackets in
-
-# Inputs are used to define inputs from the user to get inputs from them 
-# whatever the person enters in this field gets saved against the variable in
-# programme
-# Python libraries are a set of useful functions so you don't have to learn 
-# how to write python from scratch
-# with basic pyhton its hard to get a programme to do something randomly
-# import statements used to import libraries and usually put at top of programme
-
-# list in pyhton used to store multiple items in a single variable
-# Brackets are important in programming to ilsturate what the functions pruporse is
-#    food = ["pizza", "burger", "pasta"]
-#    dinner =random.choice(food)
-#    print (dinner)
-
-# functions can recieve arguments when they are called, data are called arguments
-# can put things in parenthesis to enable function to pass data via new variables 
-# if statement will allow a function to do different things depending on certain 
-# conditions - see indetentations to understand contents of if statements
-
-# EQUAL SIGNS
-# Single equal sign is assignment operator
-# double equal sign checks if two values are equal 
-
-# indentation helps with containing return statmeents within if statements 
-# contained within functions
-
-# concatenate strings - means link strings together in a chain or series
-# means you can combine strings with other strings or variables
-# One Example of Combining strings and variables together
-    # print("You chose" + player + "computer chose" + computer)
-# quite often in programming there's multiple ways to do the same thing 
-# another option is called f-strings 
-# f-strings allows you to make strings with other variables and python code
-
-# else and elif statements - else if is a combination of if and else statements 
-# elif - looks at the if conditions then move onto elif to consider if statement within
-# else statement 
-#    age = 20 
-#    if age >= 18: 
-#        print("adult")
-#    elif age > 12:
-#        print("teen")
-#    elif age > 1:
-#        print("child")
-#    else:
-#        print("baby") 
-# can also check for two conditions at once 
-
-# Refactoring is the process of resturcturing code whilst keeping original functionality 
-# common to refactor code to make it simpler or more understandable @ a quick glance
-# nested if statement makes code more understandable at a quick glance 
-# can put an if inside another if elif or else statement
-
-# note once you return something, the rest of the code in a function does not run 
-# so where something is place is sequential to this return statement
-
-# placement of indentations in programming matter - driving sequence of functions 
-# and order of which they are executed in 
+# choices is allocated as output from get_choices function
+# result is the output of the check_win function where the input to
+# this function is choices of the player and the computer from the 
+# get-choices output 
+# remember player and computer are the keys and player_choice/ computer_choice 
+# are the values associated to these keys
