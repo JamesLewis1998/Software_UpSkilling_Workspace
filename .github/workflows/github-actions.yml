@@ -8,37 +8,47 @@
 # Note, An action is a pre-defined, reusable set of jobs or code that perform specific tasks within a workflow
 
 name: GitHub Actions Software Workspace
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀   
-defaults:
-  run:
-    working-directory: ./PlantMUL_Architecture_Sequencing                                                 
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀                                                    
                                                       # github.actor = Property Name
                                                       # The username of the user that triggered the initial workflow run
-on: [push]                                              # Workflow triggers are defined with the on key
-                                                # This example runs anytime the push event includes a file in the PlantMUL_Architecture_Sequencing directory 
-              # or its subdirectories, unless the file is in the PlantMUL_Architecture_Sequencing/Drafts directory.
+on: [push]                                            # Workflow triggers are defined with the on key
+                                                      # This example runs anytime the push event includes a file in the PlantMUL_Architecture_Sequencing directory 
+                                                      # or its subdirectories, unless the file is in the PlantMUL_Architecture_Sequencing/Drafts directory.
                                                       # marches zero or more of any character
 jobs:                                                 # Jobs are contained in Workflows and Run a series of Steps
-   PUML_Sequence_Image_Creation:                      # Name of Job
-    runs-on: ubuntu-latest                            # Each job runs in a runner environment specified by runs-on
-                                                      # ubuntu-latest specifies runner to execute on
-                                                      # If the Branch is Main the Action Runs else it does not
-    steps:                                            # Each step can either run a script that you define or run an action, which is a reusable extension that can simplify your workflow
-                                                      # The echo command is used to display a line of text that is passed in as an argument
-                                                      
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."                        
-      # Describe trigger for jobs to run 
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"                          
-      # Describe which server the job is now running on
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."   
-      # Branch and Repo Name
-      - name: Checkout Repository Code using Actions
+   Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Generate SVG Diagrams
-        uses: ./.github/actions/PlantUML_Generator
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+   PUML_Sequence_Image_Creation:                          # Name of Job
+    defaults:
+      run:
+        working-directory: ./PlantMUL_Architecture_Sequencing # Define Working Directory for the Job to run through
+    runs-on: ubuntu-latest                                # Each job runs in a runner environment specified by runs-on
+                                                          # ubuntu-latest specifies runner to execute on
+                                                          # If the Branch is Main the Action Runs else it does not
+    steps:                                                # Each step can either run a script that you define or run an action, which is a reusable extension that can simplify your workflow
+                                                          # The echo command is used to display a line of text that is passed in as an argument
+    - name: checkout
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: plantuml
+      id: plantuml
+      uses: grassedge/generate-plantuml-action@v1.5
+      with:
+        path: .
+        message: "Render PlantUML files"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
