@@ -23,7 +23,6 @@ jobs:                                                 # Jobs are contained in Wo
    PUML_Sequence_Image_Creation:                      # Name of Job
     runs-on: ubuntu-latest                            # Each job runs in a runner environment specified by runs-on
                                                       # ubuntu-latest specifies runner to execute on
-    if: ${{ github.ref == 'refs/heads/main'}}       
                                                       # If the Branch is Main the Action Runs else it does not
     steps:                                            # Each step can either run a script that you define or run an action, which is a reusable extension that can simplify your workflow
                                                       # The echo command is used to display a line of text that is passed in as an argument
