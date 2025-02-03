@@ -1,4 +1,4 @@
-@startuml Zero G Architecture Logic Distribution
+@startuml Zero G Architecture Logic Distribution Sequence Diagram
 
 title ZG Feature Availability Logic 
 

@@ -36,11 +36,20 @@ jobs:                                                 # Jobs are contained in Wo
       # Branch and Repo Name
       - name: Checkout Repository Code using Actions
         uses: actions/checkout@v4
-      - name: Check out PUML Action                                                                                    
-      # Set a name for the job, which is displayed in the GitHub UI
-        uses: ./.github/workflows/{PlantUML_Generator.yml}
-        with: 
-          args: -v -tsvg PlantMUL_Architecture_Sequencing/*.puml
+      - name: Get changed UML files
+        id: getfile
+        run: |
+          echo "name=files::$(git diff --name-only HEAD^ HEAD | grep .puml | xargs)" > $GITHUB_OUTPUT
+      - name: Generate SVG Diagrams
+        uses: holowinski/plantuml-github-action@main
+        with:
+          args: -v -tsvg ${{steps.getfile.outputs.files}}
+
+      - name: Push Local Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Generate SVG files for PlantUML diagrams"
+          branch: ${{ github.head_ref }}
         # The location and version of a reusable workflow file to run as a job
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."

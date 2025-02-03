@@ -1,4 +1,4 @@
-@startuml Cabin_Moods_Application_Start_Up_UC
+@startuml Cabin_Moods_Application_Start_Up_UC Sequence
     
 autonumber
 
