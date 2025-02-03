@@ -32,7 +32,7 @@ jobs:                                                 # Jobs are contained in Wo
       - name: Checkout Repository Code using Actions
         uses: actions/checkout@v4
       - name: Generate SVG Diagrams
-        uses: ./.github/workflows/PlantUML_Generator.yml
+        uses: ./.github/actions/PlantUML_Generator
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
