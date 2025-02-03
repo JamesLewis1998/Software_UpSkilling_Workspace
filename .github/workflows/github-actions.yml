@@ -42,6 +42,7 @@ jobs:                                                 # Jobs are contained in Wo
                                                           # If the Branch is Main the Action Runs else it does not
     steps:                                                # Each step can either run a script that you define or run an action, which is a reusable extension that can simplify your workflow
                                                           # The echo command is used to display a line of text that is passed in as an argument
+    - run: echo "This Job is running on ${{github.path}}"
     - name: checkout
       uses: actions/checkout@v1
       with:
@@ -50,7 +51,7 @@ jobs:                                                 # Jobs are contained in Wo
       id: plantuml
       uses: grassedge/generate-plantuml-action@v1.5
       with:
-        path: .
+        path: Software_UpSkilling_Workspace/PlantMUL_Architecture_Sequencing/Scenario_Service
         message: "Render PlantUML files"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
