@@ -35,7 +35,7 @@ jobs:                                                 # Jobs are contained in Wo
     defaults:
       run:
         shell: bash                                       #A shell is a terminal application used to interface with an operating system through written commands. Bash is a popular default shell on Linux and macOS
-        working-directory: ./Software_UpSkilling_Workspace/PlantMUL_Architecture_Sequencing/Scenario_Service # Define Working Directory for the Job to run through
+        working-directory: Software_UpSkilling_Workspace/PlantMUL_Architecture_Sequencing/Scenario_Service # Define Working Directory for the Job to run through
     
     runs-on: ubuntu-latest                                # Each job runs in a runner environment specified by runs-on
                                                           # ubuntu-latest specifies runner to execute on
