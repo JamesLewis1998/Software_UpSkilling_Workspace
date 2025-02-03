@@ -8,7 +8,10 @@
 # Note, An action is a pre-defined, reusable set of jobs or code that perform specific tasks within a workflow
 
 name: GitHub Actions Software Workspace
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀                                                    
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀   
+defaults:
+  run:
+    working-directory: ./PlantMUL_Architecture_Sequencing                                                 
                                                       # github.actor = Property Name
                                                       # The username of the user that triggered the initial workflow run
 on: [push]                                              # Workflow triggers are defined with the on key
