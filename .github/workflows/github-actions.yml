@@ -11,14 +11,10 @@ name: GitHub Actions Software Workspace
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀                                                    
                                                       # github.actor = Property Name
                                                       # The username of the user that triggered the initial workflow run
-on:                                                   
-  push:                                               # Workflow triggers are defined with the on key
-    paths:                                            # This example runs anytime the push event includes a file in the PlantMUL_Architecture_Sequencing directory 
-      - 'PlantMUL_Architecture_Sequencing'            # or its subdirectories, unless the file is in the PlantMUL_Architecture_Sequencing/Drafts directory.
-      - '**.puml'                                     # marches zero or more of any character
-    branches-ignore: 
-      - main                                          #Ignore changes to main branch
-
+on: [push]                                              # Workflow triggers are defined with the on key
+                                                # This example runs anytime the push event includes a file in the PlantMUL_Architecture_Sequencing directory 
+              # or its subdirectories, unless the file is in the PlantMUL_Architecture_Sequencing/Drafts directory.
+                                                      # marches zero or more of any character
 jobs:                                                 # Jobs are contained in Workflows and Run a series of Steps
    PUML_Sequence_Image_Creation:                      # Name of Job
     runs-on: ubuntu-latest                            # Each job runs in a runner environment specified by runs-on
@@ -35,12 +31,10 @@ jobs:                                                 # Jobs are contained in Wo
       # Branch and Repo Name
       - name: Checkout Repository Code using Actions
         uses: actions/checkout@v4
-      
       - name: Generate SVG Diagrams
         uses: holowinski/plantuml-github-action@main
         with:
           args: -v -tsvg diagrams/*.puml  
-
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
