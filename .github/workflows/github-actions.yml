@@ -34,7 +34,9 @@ jobs:                                                 # Jobs are contained in Wo
    PUML_Sequence_Image_Creation:                          # Name of Job
     defaults:
       run:
+        shell: bash                                       #A shell is a terminal application used to interface with an operating system through written commands. Bash is a popular default shell on Linux and macOS
         working-directory: ./PlantMUL_Architecture_Sequencing/Scenario_Service # Define Working Directory for the Job to run through
+    
     runs-on: ubuntu-latest                                # Each job runs in a runner environment specified by runs-on
                                                           # ubuntu-latest specifies runner to execute on
                                                           # If the Branch is Main the Action Runs else it does not
