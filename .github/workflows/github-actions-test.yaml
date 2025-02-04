@@ -5,10 +5,10 @@ name: GitHub Actions Software Workspace
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀                                                    
                                                       # github.actor = Property Name
                                                       # The username of the user that triggered the initial workflow run
-on: [push]                                            # Workflow triggers are defined with the on key
-                                                      # This example runs anytime the push event includes a file in the PlantMUL_Architecture_Sequencing directory 
-                                                      # or its subdirectories, unless the file is in the PlantMUL_Architecture_Sequencing/Drafts directory.
-                                                      # marches zero or more of any character
+on:                                                   # Workflow triggers are defined with the on key
+  push:                                                    # This example runs anytime the push event includes a file in the PlantMUL_Architecture_Sequencing directory 
+    branches:                                                  # or its subdirectories, unless the file is in the PlantMUL_Architecture_Sequencing/Drafts directory.
+    - main                                                  # marches zero or more of any character
 jobs:                                                 # Jobs are contained in Workflows and Run a series of Steps
    Explore-GitHub-Actions:
     runs-on: ubuntu-latest
