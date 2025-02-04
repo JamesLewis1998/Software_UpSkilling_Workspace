@@ -35,4 +35,4 @@ jobs:
             ls ${{ github.workspace }}
         - run: echo "🍏 This job's status is ${{ job.status }}."
     RPS_programme_Test:
-          uses: ./.github/workflows/PythonRPS_Workflow #./ means the current directory you're in 
+          uses: ./.github/workflows/PythonRPS_Workflow.yaml #./ means the current directory you're in 

@@ -36,5 +36,5 @@ jobs:
             ls ${{ github.workspace }}
         - run: echo "🍏 This job's status is ${{ job.status }}."
   CIPipeline: 
-        uses: ./.github/workflows/CIPipeline #./ means the current directory you're in 
+        uses: ./.github/workflows/CIPipeline.yaml #./ means the current directory you're in 
     
