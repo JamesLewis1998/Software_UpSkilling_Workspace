@@ -13,13 +13,13 @@ on:
    workflow_call: 
                                               # workflow_call is used to indicate that a workflow can be called by another workflow. When a workflow is triggered with the workflow_call event, 
                                               # the event payload in the called workflow is the same event payload from the calling workflow
-                                                 
-   pull_request: # A pull request is a proposal to merge a set of changes from one branch into another. In a pull request, collaborators can review and discuss the proposed set of changes before they integrate the changes into the main codebase
-        branches: 
-        - main    # If pull request is against main branch
 
-    schedule:           # Scheduled workflows run on the latest commit on the default or base branch.
-    - cron: '0 0 * * 0' # 'Minute Hour DayofMonth MonthofYr DayofWeek'
+   pull_request: # A pull request is a proposal to merge a set of changes from one branch into another. In a pull request, collaborators can review and discuss the proposed set of changes before they integrate the changes into the main codebase
+      branches: 
+      - main    # If pull request is against main branch
+
+   schedule:           # Scheduled workflows run on the latest commit on the default or base branch.
+   - cron: '0 0 * * 0' # 'Minute Hour DayofMonth MonthofYr DayofWeek'
                         # Note 0 is for Sunday in Day of the Week
                         # The workflow therefore triggers every Sunday at hour 0 and minute 0 
                         # Note an * means all valid values
