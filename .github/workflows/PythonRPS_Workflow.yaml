@@ -1,5 +1,4 @@
 name: PythonRPS_Workflow
-run-name: ${{ github.actor }} is testing out the RPS Programme ✂️🧻                                                    
 
 on:
   workflow_call: 
@@ -7,17 +6,31 @@ on:
                                               # the event payload in the called workflow is the same event payload from the calling workflow
    
 jobs:
-  RPS_Runner:
+  RPS_Runner_SetUp:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["pypy3.10", "3.9", "3.10", "3.11", "3.12", "3.13"]
+        # A matrix strategy lets you use variables in a single job definition to automatically create multiple job runs that are based on the combinations of the variables.
+        # For example, you can use a matrix strategy to test your code in multiple versions of a language or on multiple operating systems. 
+        # So the Matrix Here is based on setting up the runner against 6 different version of python 
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+      # ======== Python Test Environment Set Up =========
+      - run: echo "Python Set Up 🐍"
+      - uses: actions/checkout@v4                            # Actions/checkout is essential for cloning repositories into the runner's workspace
+      - name: Set up Python ${{ matrix.python-version }}     # Contains the matrix properties defined in the workflow for the current job
+        uses: actions/setup-python@v5                        # SetUp Python is an off the shelf action available in Github
         with:
           python-version: ${{ matrix.python-version }}       # You can test your matrix by printing the current Python version
       - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
+        run: python -c "import sys; print(sys.version)"      
+      # ======== Install Dependencies ========
+      - name: Install dependencies                           # GitHub-hosted runners have the pip package manager installed. You can use pip to install dependencies from the PyPI package registry before building and testing your code
+        run: |
+          python -m pip install --upgrade pip               
+          pip install -r requirements.txt
+      # ======== Testing with pytest and pytest-cov =======
+      - run: echo "Test Rock Paper Scissors Programme ✂️🧻"
+
+

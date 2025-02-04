@@ -22,5 +22,5 @@ concurrency:                                  # Cancel running jobs and prefer l
   cancel-in-progress: true                    # means github will cancel any in progress workflow against this one when new code is pushed to main
 
 jobs: 
-  CIPipeline: 
+  CI_Pipeline_Runner: 
     uses: ./.github/workflows/CIPipeline.yaml #./ means the current directory you're in 

@@ -1,5 +1,4 @@
 name: 'Continuous Integration (CI) 🛠️'
-
 on: 
    # Don't check branches because CD calls this CI Workflow 
    # Within CD Workflow Branches are checked
@@ -24,7 +23,7 @@ on:
                         # The workflow therefore triggers every Sunday at hour 0 and minute 0 
                         # Note an * means all valid values
 jobs: 
-    Explore-GitHub-Actions:
+    Explore_Actions_Job:
         runs-on: ubuntu-latest
         steps:
         - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -38,6 +37,6 @@ jobs:
           run: |
             ls ${{ github.workspace }}
         - run: echo "🍏 This job's status is ${{ job.status }}."
-    RPS_programme_Test:
+    RPS_programme_Job:
           needs: Explore-GitHub-Actions                     # Needs Explore Actions to complete before using CIPipeline
           uses: ./.github/workflows/PythonRPS_Workflow.yaml #./ means the current directory you're in 
