@@ -39,4 +39,5 @@ jobs:
             ls ${{ github.workspace }}
         - run: echo "🍏 This job's status is ${{ job.status }}."
     RPS_programme_Test:
+          needs: Explore-GitHub-Actions                     # Needs Explore Actions to complete before using CIPipeline
           uses: ./.github/workflows/PythonRPS_Workflow.yaml #./ means the current directory you're in 
