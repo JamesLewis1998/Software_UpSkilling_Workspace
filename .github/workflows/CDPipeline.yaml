@@ -1,11 +1,10 @@
-name: 'Continuous Delivery (CD) Pipeline 🚀' # Name displayed in Actions UI in Github
-run-name: ${{ github.actor }} is testing out the CD Pipeline  
+name: 'Continuous Delivery (CD) Pipeline' # Name displayed in Actions UI in Github
+run-name: ${{ github.actor }} is testing out the CD Pipeline 🚀
 
 on: 
   workflow_dispatch:                          # Enables you to be able to run this manually
                                               # You can also specify which branch you'd want to run
                                               # the workflow on in the Github UI
-                                              
   push:                                       # Do not want to deploy on feature branches only want to
                                               # Deploy on main branches hence what's specified against push 
     branches: 
