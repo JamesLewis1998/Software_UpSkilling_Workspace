@@ -72,3 +72,5 @@ print(y) # y Returns true because one of the two conditions are true
 
 # Is is called the indentiy operator: used to compare two objects and returns true if both are the same object
 # In is called the membership operator: used to determine if a value is contained in a list or another sequence
+
+# Ternary Operator in Python
