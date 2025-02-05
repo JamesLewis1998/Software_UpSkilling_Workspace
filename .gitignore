@@ -3,6 +3,7 @@
 # You can create a . gitignore file in your repository's root directory to tell 
 # Git which files and directories to ignore when you make a commit.
 
+# To ignore specific files ending in .pyc
 *.pyc
 
 # To ignore an entire directory with all its contents, you need to 
