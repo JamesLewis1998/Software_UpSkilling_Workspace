@@ -1,0 +1,26 @@
+name: 'Continuous Delivery (CD) Pipeline' # Name displayed in Actions UI in Github
+run-name: ${{ github.actor }} is testing out the CD Pipeline 🚀
+
+on: 
+  workflow_dispatch:                          # Enables you to be able to run this manually
+                                              # You can also specify which branch you'd want to run
+                                              # the workflow on in the Github UI
+  push:                                       # Do not want to deploy on feature branches only want to
+                                              # Deploy on main branches hence what's specified against push 
+    branches: 
+    - main
+    - JDICKIN2_YAMLPipeLines_Branch           # Allow Pipeline to run on Testing Branch Plus Main
+
+    paths-ignore:                             # Define what paths to ignore, ie things that have no impact on 
+    - 'README.md'                             # what the outputs of the respository such as Apps might not be interested in 
+    - 'Python_Cheat_Sheet.md'
+
+concurrency:                                  # Cancel running jobs and prefer latest code
+  group: ${{github.workflow}}-${{github.ref}} # Only care about the latest build against code being pushed
+                                              # github.workflow = The ref path to the workflow
+                                              # github. ref = The fully-formed ref of the branch or tag that triggered the workflow run. For workflows triggered by push, this is the branch or tag ref that was pushed.
+  cancel-in-progress: true                    # means github will cancel any in progress workflow against this one when new code is pushed to main
+
+jobs: 
+  CI_Pipeline_Runner: 
+    uses: ./.github/workflows/CIPipeline.yaml #./ means the current directory you're in 

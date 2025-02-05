@@ -1,0 +1,42 @@
+name: 'Continuous Integration (CI) 🛠️'
+on: 
+   # Don't check branches because CD calls this CI Workflow 
+   # Within CD Workflow Branches are checked
+   
+   #   push:
+   #    branches:    
+   #    - main 
+   #    paths-ignore: 
+   #    - README.md
+      
+   workflow_call: 
+                                              # workflow_call is used to indicate that a workflow can be called by another workflow. When a workflow is triggered with the workflow_call event, 
+                                              # the event payload in the called workflow is the same event payload from the calling workflow
+
+   pull_request: # A pull request is a proposal to merge a set of changes from one branch into another. In a pull request, collaborators can review and discuss the proposed set of changes before they integrate the changes into the main codebase
+      branches: 
+      - main    # If pull request is against main branch
+
+   schedule:           # Scheduled workflows run on the latest commit on the default or base branch.
+   - cron: '0 0 * * 0' # 'Minute Hour DayofMonth MonthofYr DayofWeek'
+                        # Note 0 is for Sunday in Day of the Week
+                        # The workflow therefore triggers every Sunday at hour 0 and minute 0 
+                        # Note an * means all valid values
+jobs: 
+    Explore_Actions_Job:
+        runs-on: ubuntu-latest
+        steps:
+        - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+        - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+        - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+        - name: Check out repository code
+          uses: actions/checkout@v4
+        - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+        - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+        - name: List files in the repository
+          run: |
+            ls ${{ github.workspace }}
+        - run: echo "🍏 This job's status is ${{ job.status }}."
+    RPS_programme_Job:
+          needs: Explore_Actions_Job                     # Needs Explore Actions to complete before using CIPipeline
+          uses: ./.github/workflows/PythonRPS_Workflow.yaml #./ means the current directory you're in 
