@@ -5,3 +5,9 @@ Note: Actions/checkout is essential for cloning repositories into the runner's w
 # Virtual Environments 
 
 A Python virtual environment (venv) is simply a directory with a particular file structure. It has a bin subdirectory that includes links to a Python interpreter as well as subdirectories that hold packages installed in the specific venv
+
+# .vscode 
+
+# .venv 
+
+# Requirements.txt Use in the Working Repository

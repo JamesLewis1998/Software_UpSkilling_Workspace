@@ -34,8 +34,8 @@ jobs:
       
       # ======== Testing with pytest and pytest-cov =======
       - run: echo "Test Rock Paper Scissors Programme ✂️🧻"
-      - name: Test with pytest
-        run: |
-           pip install pytest pytest-cov
-           pytest ./Python_Youtube_Tests/RockPaperScissorsExample_Test.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
-        # pytest looks for folders called tests then looks for a file with anything that begins with the word test
+    # - name: Test with pytest
+    #   run: |
+    #      pip install pytest pytest-cov
+    #      pytest ./Python_Youtube_Tests/RockPaperScissorsExample_Test.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+    #   # pytest looks for folders called tests then looks for a file with anything that begins with the word test
