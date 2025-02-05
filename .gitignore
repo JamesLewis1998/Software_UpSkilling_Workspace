@@ -1,1 +1,13 @@
+# ========= Configuring ignored files for a single repository ============
+
+# You can create a . gitignore file in your repository's root directory to tell 
+# Git which files and directories to ignore when you make a commit.
+
 *.pyc
+
+# To ignore an entire directory with all its contents, you need to 
+# include the name of the directory with the slash / at the end:
+
+.vscode/
+.venv/ 
+.pytest_cache/
