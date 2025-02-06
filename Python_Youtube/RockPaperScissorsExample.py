@@ -62,6 +62,7 @@ def check_win (player, computer):
 # programme we need to return the result in the command window
 
 choices = get_choices ()
+print(choices)
 result = check_win (choices["player"], choices["computer"])
 print (result)
 
