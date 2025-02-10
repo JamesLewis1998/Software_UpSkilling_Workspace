@@ -89,3 +89,50 @@ print(len(name))
 print("am" in name) # returns true because substring "am" is in string "James"
 
 # ====== Escaping Characters =====
+alha = 463.4 - 625 +3078
+print(alha)
+
+# Add a double quote in the string
+name = "Jam\"es"
+print(name) 
+# Causes you to print the double quote
+# The above prints Jam"es in the terminal 
+name = 'Jam"\'es'
+print(name)
+# Returns Jam"'es in terminal 
+name = "Jam\nes"
+# Means new line 
+print(name)
+
+# Note if you add a single slash in the code often thinks this is an escape key 
+# An escape key as in your keyboard command to stop or cancel a process
+
+name = "Jam\\es"
+print(name)
+name = "Jam\es"
+print(name)
+      # Double backslash enables when code is running it doesnt read the single backslash as
+      # an escape command
+
+# ====== String Characters and Splicing =====
+
+# Can use square brackets to get a specific character in a string 
+# In programming whenever you're counting, you start counting from zero
+# For example: 
+name = "James"
+print(name[0]) # J 
+print(name[1]) # a
+print(name[2]) # m
+print(name[3]) # e
+print(name[4]) # s
+# print(name[5]) # Error - string is out of range
+
+# When going backwards you do not start at 0 because there is no negative 0
+print(name[-1]) # s 
+print(name[-2]) # e
+print(name[-4]) # a
+print(name[-5]) # J
+
+# Can also use range - known as slicing 
+print(name[1:3]) # returns am as a is 1 and m is 2 
+                 # reutnrs everything up to character 3
