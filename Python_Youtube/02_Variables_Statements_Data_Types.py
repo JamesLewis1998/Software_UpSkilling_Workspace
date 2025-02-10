@@ -94,5 +94,3 @@ print(isinstance(number,int))
 #   range for ranges 
 #   dict for dictionaries
 #   set for sets
-
-# Operators in Python
