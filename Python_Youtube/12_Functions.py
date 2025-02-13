@@ -72,15 +72,49 @@ print(val)                  # Output from this will be 1 because what we change 
 # Dictionary Example: 
 
 def change1(value):
-    value["name"] = "Ben"
+    value["name"] = "Ben"   # Change the name to Ben using the change function because the dictionary is mutable
 
-val1 = {"name":"James"}
-change1(val1)
-print(val1)
+val1 = {"name":"James"}     # val1 in dictionary "name" is defined as "james"
+change1(val1)               # but the value inside the function change is changed to "ben"
+print(val1)                 # Because a dictionarys mutable
+                            # Output from print is {'name': 'Ben'} in command terminal 
+# value["name"] in the function body references the key of the dictionary 
 
+## ======= Return Statement =========
+# A function can return a value using the return command in the function statement
+# Returns a value we can continue to use in our programme 
+# For Example:
 
-## ======= SUBTITLE3 =========
+def change2(name): 
+    print("Hello" + name + "!")   # Here the function returns the name which will continue to be used in the programme
+    return name                   # When the function meets the return statement, the function ends
+                                  # We can also omit the return value to finish the function and not return anything
 
+def change3(name): 
+    if not name: 
+        return                    # This ends the function and we don't even need an else
+    print("Hello" + name + "!")   # If there is a name the function will return the print statement
 
+change3(False)                    # Means the function will action the return in the body
+                                  # Because we have to define something as an input into the function 
+                                  # Alternatively we could define the default as False 
 
+def change4(name = False):        # Default set to false in the function input 
+    if not name:                  # if not name, ie if name = False, return 
+        return 
+    print("Hello" + name + "!")   # else the function will print as shown in command window
+
+change4("James")                # Outputs HelloJames! in the command terminal
+
+# wE CAN TAKE THE ABOVE AND CONVERT TO THE FOLLOWING: 
+
+def change5(name):
+    print('Hello' + name + "!")  # This function prints this in the command window
+    return name, "James", 26
+
+print(change5("Ben"))           # This is then going to print what's returned by the function with the input "Ben"
+                                # so this command runs the function change 5 with the input as "Ben"
+                                # Meaning the output in the command window is:
+                                # HelloBen!---> Print output in the body of the function change5
+                                # ('Ben', 'James', 26) ---> return output in the function with "Ben", "James",26
 
