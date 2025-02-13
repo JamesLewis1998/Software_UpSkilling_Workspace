@@ -1,0 +1,43 @@
+@startuml 
+
+title SRVM Settings Load Logic
+
+participant "User" as U
+participant "SRVM \n Switch Pack" as SP
+participant "CCCM \n Scenario Service" as SS
+participant "Settings Management \n Client (Android)" as SMC
+participant "CCCM \n VAL" as VAL
+participant "CCCM \n VIP - VLC Source" as VIP
+participant "BCMA" as BCMA
+participant "SRVM - Mirror" as SRVM 
+
+== System Start Up/ Steady State ==
+
+note over SS,VAL #GreenYellow: **Preconditons:** \n 1.Vehicle Lifecycle State >= ENUM_VEHICLE_STATE_COMFORT 
+
+        alt Start Up Behaviour
+        VIP -> SS: NotifyIVISystemState \n (CCCM Wake Up Notification, Enum Unknown)
+        SS -> VAL: GetRequest against all VHAL Settings
+        VAL --> SS: GetResponse with all Body Actuator States 
+        SS -> SS: Cache live value of all Body Actuator States
+        SS -> SMC: Android_Proxy_RecallSettingskeys 
+        note over SS,SMC: Settings Keys recall response out of scope of this diagram
+        else Steady State
+        SS -> SMC: Android_Proxy_RecallSettingskeys 
+        SMC -> SS: Android_Proxy_NotifySettingDataAvailable
+        note over SS,SMC: Settings Keys recall response out of scope of this diagram
+        end
+
+note over SS,VAL #LightBlue: Considering Happy Path Only of Authenticated Account log in with setting previously saved \n Using Brightness of SRVM as an example
+
+        SS -> SS: Scenario Service has list of Setting_Name's with \n Stored Settings against them
+                    SS -> SMC: Android_Proxy_RecallSettingDataRequest (SRVM_Brightness_Setting) 
+                    SMC -> SMC: SMC Recalls Setting_Name data via SMS 
+                    SMC -> SS: Android_Proxy_RecallSettingDataResponse (ENUM_STATUS_OK, Brightness_Lvl3)
+                    SS -> SS: Scenario Service Saves Brightness_Lvl3 in Volatile Memory against SRVM_Brightness_Setting
+                    SS -> SS: Lookup Table Containing SRVM_Brightness_Setting, \n Brightness_Lvl3 and Android Property
+                    SS -> VHAL: Apply Personalised Body Settings against VHAL
+        SS -> SS: Scenario Service saves key_list_entry in Volitile Memory \n (Scenario Service now has Scenario ID's \n for All Custom Scenario Settings)
+
+
+@enduml
