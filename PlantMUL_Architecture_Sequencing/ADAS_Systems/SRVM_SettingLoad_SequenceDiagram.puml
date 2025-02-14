@@ -11,6 +11,8 @@ participant "CCCM \n VAL" as VAL
 participant "BCMA" as BCMA
 participant "SRVM - Mirror" as SRVM 
 
+autonumber
+
 == System Start Up/ Steady State ==
 
 note over SS,VAL #GreenYellow: **START OF USE CASE**\n **Preconditons:** \n 1.Vehicle Lifecycle State >= ENUM_VEHICLE_STATE_COMFORT \n 2. SRVM Setting Set at value 1 from Cached Memory in Module/ previous drive cycle
@@ -25,8 +27,8 @@ note over SS,VAL #GreenYellow: **START OF USE CASE**\n **Preconditons:** \n 1.Ve
         note over SS,SMC: Settings Keys recall response out of scope of this diagram
         else Steady State
         SS -> SMC: Android_Proxy_RecallSettingskeys 
+                note over SS,SMC: Settings Keys recall response out of scope of this diagram
         SMC -> SS: Android_Proxy_NotifySettingDataAvailable
-        note over SS,SMC: Settings Keys recall response out of scope of this diagram
         end
 
 note over SS,SMC #LightBlue: Considering Happy Path Only of Authenticated Account log in with setting previously saved \n\n **Using Brightness of RearDisplay as an example**
