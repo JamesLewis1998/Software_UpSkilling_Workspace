@@ -36,6 +36,16 @@ while count < 10:                   # Whilst count is below 10, execute the foll
 print ("After the Loop")            # After count == 10 then code moves to this print condition and prints "After Loop in Cmd window"
 
 # For Loop Example:
+    # We can tell python to execute a block a predetermined amount of times upfront without the need for a seaprate varaible and conditional to check its value 
+    # Its commonly used to iterate the items in a list 
+
+# Define a List: 
+items = [1,2,3,4]
+for item in items: 
+    print(item)
+    
+
+
 
 
 ## ======= SUBTITLE2 =========
