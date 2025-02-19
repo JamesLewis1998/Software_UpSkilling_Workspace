@@ -77,4 +77,29 @@ for index, name in enumerate(names):
     print(index,name)               # Returns 0 James,1 Ben,2 Sophie
 
 ## ======= Break and Continue Summary =========
-    # 
+    # Both while and for loops can be interupted inside the block using break and continue
+        # Continue tells python to stop the current iteration and tells python to execute the next one 
+        # Break tells python to stop the loop all together and go on with the next insutrction after the loop ends
+
+# Break - Consider our example earlier with the infinite While loop
+condition2 = True
+while condition2 == True:           # Condtion2 defined as true 
+    print("this condition is true") # print this is true in the command window
+    break                           # Introducing break enables you to avoid running this infinite loop in the command window 
+                                    # The function prints the condition once then moves onto break which tells it to stop the loop all together
+                                    # Because the function sees condition2 is true, prints the function then moves onto the next line telling it
+                                    # to break
+
+# Continue - Consider the following: 
+items = [1,2,3,4,5,6,7,8]
+for item in items:
+    if item == 5: 
+        break                       # Function will stop entirely and python will not run anymore iterations of the loop
+    print(item)                     # Therefore in command terminal only 1 2 3 4 will be printed before item == 5 and the condition to break is met
+
+# Continue - Moving onto the next example: 
+items = [1,2,3,4,5,6,7,8]
+for item in items:
+    if item == 2: 
+        continue                    # If item == 2 the function moves to the next iteration in the loop and does not print 2 
+    print(item)                     # Therefore when printing into the terminal we will only print 1,3 and 4 in there and skip out 2
