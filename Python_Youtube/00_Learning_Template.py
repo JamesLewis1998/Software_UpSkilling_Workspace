@@ -17,5 +17,3 @@ print( "Insert Section Title here")
 ## ======= SUBTITLE3 =========
 
 
-
-
