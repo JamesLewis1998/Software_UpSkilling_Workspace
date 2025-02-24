@@ -73,7 +73,7 @@ print(list(result))
     # Reduce is used to calculate a value out of a sequence, like a list 
 
 # For Example - have a list of expenses stored as tuples as follows: 
-expenses = [
+expenses = [            
     ('Dinner',80),                      # Remember tuples as a data structure is deonted by ()
     ('Car Repair',120)                  # Two tuples here - remember tuples are immutable
 ]
@@ -85,3 +85,26 @@ for expense in expenses:                # Using for and in to pick every expense
                                             # Ie ('Dinner',80) -> Dinner is at index 0 and 80 is at index 1
     # += equivalent to sum = sum + expense[1]
 print(sum)                              # returns 200 in command window
+
+# Reduce is a little different to Map and Filter - we have to import it from the standard library
+    
+    # function is contained within functools therefore use: 
+from functools import reduce            # functools is one of the libraries
+
+    # Taking the above example and re creating this as functions: 
+
+# Define Expenses again:
+expenses = [                            
+    ('Dinner',80),                      # Defined in Tuples
+    ('Car Repair',120)                  # Remember index [0] is Car Repair
+]
+sum = reduce(lambda a,b: a[1] + b[1], expenses)
+    # Here lambda takes in two arguements 
+        # First arguments is the accumulated argument
+        # Second value is the update value from the iterable
+    # Continue adding all of this together and reduce all the index values in the expense list into one number
+        # The one number here being the total hence why it's referred to as "reduce"
+    # Remember lamdba here in python is
+        # A lot quicker to use the reduce function compared to the above code we have previously
+
+print(sum)
