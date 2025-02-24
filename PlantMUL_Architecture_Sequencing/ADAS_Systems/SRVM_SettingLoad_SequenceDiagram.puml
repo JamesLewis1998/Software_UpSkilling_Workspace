@@ -13,7 +13,7 @@ participant "SRVM - Mirror" as SRVM
 
 autonumber
 
-== System Start Up/ Steady State ==
+== System Start Up/ Steady State Use Case ==
 
 note over SS,VAL #GreenYellow: **START OF USE CASE**\n **Preconditons:** \n 1.Vehicle Lifecycle State >= ENUM_VEHICLE_STATE_COMFORT \n 2. SRVM Setting Set at value 1 from Cached Memory in Module/ previous drive cycle
 
