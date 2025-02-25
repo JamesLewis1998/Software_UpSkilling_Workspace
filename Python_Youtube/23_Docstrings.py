@@ -72,3 +72,6 @@ print(help(Dog))                    # when you run this in the command window yo
 
 #Docstrings are specific standards and makes it easier to get information using different helper methods
     # a lot of other methods to docstrings to allow someone to get information on the purpose of your code
+
+# Timestamp Section for Continuation:
+    # Docstrings Section commpletion and move to Annotations: timestamp section https://youtu.be/eWRfhZUzrAc?t=11397
