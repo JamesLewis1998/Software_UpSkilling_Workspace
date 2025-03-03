@@ -28,7 +28,8 @@ print(numbers_power_2_loop)
 # This is how you would do it using map:
 
 numbers_power_2_map = list(map(lambda n : n**2,numbers))
-print(numbers_power_2_map)
+print(numbers_power_2_map)      # Remember
+                                    # # Map is used to run a function upon each item in an iterable item like a list
 
 # Again, both the loop and list approach above are more complex
     # It's simpler in both cases here to use the list compression syntax and makes for more efficient code/ programming
