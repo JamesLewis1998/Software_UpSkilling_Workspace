@@ -22,7 +22,7 @@ print(numbers_power_2)          # Produces a list in command window of every num
 
 numbers_power_2_loop = []       # Define an empty list
 for n in numbers:               # Define for loop entry condition -> for n 
-    numbers_power_2_loop.append(n**2)
+    numbers_power_2_loop.append(n**2)   # appends index of numbers to empty list defined with each entry being put to the power of 2
 print(numbers_power_2_loop)
 
 # This is how you would do it using map:
