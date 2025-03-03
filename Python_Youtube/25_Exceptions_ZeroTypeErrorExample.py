@@ -36,3 +36,26 @@ except Exception as error:          # Define exception as error
 
 
 ## ===== Defining your own Exception Class =====
+    # This extends from exception
+
+class DogNotFoundException(Exception):  # Raise the Exception Error above into the class error
+    pass                            # Pass here just means do nothing 
+                                        # We use this when we define a class without methods or a function without code
+
+# Now try this out: 
+try:
+    raise DogNotFoundException()
+except DogNotFoundException: 
+    print('Dog Not Found')
+    # Prints the above in the command line because it raises DogNotFoundException from try above
+
+# Can extend the above to give more context in the code: 
+
+class DogNotFoundException2(Exception):
+    print('Dog Not Found 2')
+    pass
+
+try:
+    raise DogNotFoundException2()       # Raise the error in the class
+except DogNotFoundException2:
+    print('Dog Not Found Exception 3')
