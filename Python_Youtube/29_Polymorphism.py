@@ -38,3 +38,8 @@ animal2.eat()    # Returns Eating Cat Food in the command terminal
 
 # So we've built a generlaised interface and do not need to know whether the animal is a cat or a dog
     # Just that we can call eat on it. 
+
+# NOTE: 
+    # In Python, self is a fundamental concept when working with object-oriented programming (OOP). 
+    # It represents the instance of the class being used.
+    # Whenever we create an object from a class, self refers to the current object instance
