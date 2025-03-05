@@ -22,12 +22,12 @@ print( "Modules")
     # If you HAVE to have a strange name, try using the __import__() function.
 
 # Change from using the 12_Functions to a new file defined for the Purposes of this Task
-import Common_Functions
-Common_Functions.bark()         # Will print woof in the command window
+import Python_Youtube.A_Common_Functions as A_Common_Functions
+A_Common_Functions.bark()         # Will print woof in the command window
                                 # This strategy allows us to load everything defined in a file
 
 # Can also use the from import syntax to call function directly
-from Common_Functions import bark
+from Python_Youtube.A_Common_Functions import bark
 bark()                          # This strategy allows us to call specific functions from a file
                                 # Allows us to just import the things we need 
 
@@ -39,13 +39,13 @@ bark()                          # This strategy allows us to call specific funct
         # Then need to create an empty folder called __init__.py
 
 # __init__.py is very important -> this tells python that the folder contains modules
-from Function_Library import Animals    # From the Folder import the Animals File 
+from Course_Function_Library import Animals    # From the Folder import the Animals File 
 Animals.bark()                          # From this Animals subfolder 
 Animals.tweet()                         # Function imported from Animals subfolder
 Animals.moo()                           # Function imported from Animals subfolder 
 
 # Or in order to import from a specific function within the file in the subfolder you can do the following
-from Function_Library.Animals import bark
+from Course_Function_Library.Animals import bark
 bark()                                  # This imports the bark function directly which can then be directly called on the 
                                         # command line
 
