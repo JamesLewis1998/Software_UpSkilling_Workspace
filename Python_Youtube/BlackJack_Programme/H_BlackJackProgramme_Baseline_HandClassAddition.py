@@ -82,10 +82,14 @@ class Hand():
     def is_black_jack(self):
         return self.get_value() == 21
 
-    def display(self):
+    def display(self, show_all_dealer_cards = False):
         print(f'''{"Dealer's" if self.dealer else "Your"} hand: ''')
-        for card in self.cards:
-            print(card)
+        for index, card in enumerate(self.cards):
+            if index == 0 and self.dealer and \
+            not show_all_dealer_cards and not self.is_black_jack:
+                print("dealer hand - hidden")
+            if self.dealer == False: 
+                print(card)
         
         if not self.dealer: 
             print("Value", self.get_value())
@@ -174,5 +178,22 @@ print(hand.display())
 # To view the dealers hand you can run the following
 hand.dealer = True
 print(hand.display())
+
     # In a real deal of blackjack you owuld never be able to see the dealer hand 
-    # we therefore need to prevent this being visible in the command terminal 
+    # we therefore need to prevent this being visible in the command terminal
+        # In order to do this we need to gain access to the card index - to determine if its a dealer or player hand
+            # therefore need to update for loop to get access to both the card and the card index
+        # for index, card in enumerate(self.cards):
+            # if index == 0 and self.dealer
+        # Developed this because cards are dealt to dealer first then player 
+            # indexing refers to the process of accessing a specific element in a sequence, such as a string or list, using its position or index number
+
+# However at the end of the game we will want to expose both the dealers and players hand to show the cards each have: 
+    # therefore need to implement something to enable this
+    # to do this create a new parameter in the display method called, show_all_dealer_cards and set to false
+    # hide if we're not showing all the dealer cards hence
+        # "not show_all_dealer_cards"
+
+# Also if there's a blackjack, the game is over, the person with this is just going to win
+    # in this instance we just print all the cards
+    # you end up with quite a long line of code -> use backslash to move half of it to the next line
