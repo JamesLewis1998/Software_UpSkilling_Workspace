@@ -12,6 +12,7 @@ class Deck:
         self.cards = []                                     # New variable cards created with empty list assigned
         suits = ["Spades","Clubs","Hearts","Diamonds"]      # List of suits
         ranks = [                                           # List of ranks -> key value pairs
+                {"rank": "ACE" , "value": 11},
                 {"rank": "2" , "value": 2},
                 {"rank": "3" , "value": 3},
                 {"rank": "4" , "value": 4},
@@ -23,10 +24,8 @@ class Deck:
                 {"rank": "10" , "value": 10},
                 {"rank": "JACK" , "value": 10},
                 {"rank": "QUEEN" , "value": 10},
-                {"rank": "KING" , "value": 10},
-                {"rank": "ACE" , "value": 11},
-        ]
-
+                {"rank": "KING" , "value": 10}
+            ]
         for suit in suits:
             for rank in ranks:
                 self.cards.append(Card(suit, rank))          # Append Suit and Rank to empty Card List above 
@@ -46,7 +45,7 @@ class Deck:
 
 
 class Hand():
-    def __init__(self, dealer = False):
+    def __init__(self, dealer=False):
         self.cards = []
         self.value = 0
         self.dealer = dealer
@@ -75,10 +74,10 @@ class Hand():
         return self.get_value() == 21
 
     def display(self, show_all_dealer_cards = False):
-        print(f'''{"Dealer's" if self.dealer else "Your"} hand: ''')
+        print(f'''{"Dealer's" if self.dealer else "Your"} hand:''')
         for index, card in enumerate(self.cards):
-            if index == 0 and self.dealer and \
-            not show_all_dealer_cards and not self.is_black_jack:
+            if index == 0 and self.dealer \
+            and not show_all_dealer_cards and not self.is_black_jack:
                 print("dealer hand - hidden")
             else: 
                 print(card)
@@ -98,7 +97,7 @@ class Game():
             try:
                 games_to_play = int(input("How many games do you want to play?:"))
             except: 
-                print("You Must Enter a Number")
+                print("You Must Enter a Number.")
 
         while game_number < games_to_play:
             game_number += 1
@@ -139,23 +138,24 @@ class Game():
             player_hand_value = player_hand.get_value()
             dealer_hand_value = dealer_hand.get_value()
 
-            while dealer_hand.get_value() < 17:
+            while dealer_hand_value < 17:
                 dealer_hand.add_card(deck.deal(1))
                 dealer_hand_value = dealer_hand.get_value()
+            
             dealer_hand.display(show_all_dealer_cards = True)
 
             if self.check_winner(player_hand, dealer_hand):
                 continue
 
             print("Final Results")
-            print("Your Hand: {player_hand_value}") 
-            print("Dealers Hand: {dealer_hand_value}")
+            print("Your Hand:", {player_hand_value}) 
+            print("Dealers Hand", {dealer_hand_value})
 
             self.check_winner(player_hand,dealer_hand, True)
             
         print("\n Thanks for playing!")
 
-    def check_winner(self, player_hand, dealer_hand, game_over = False):
+    def check_winner(self, player_hand, dealer_hand, game_over=False):
         if not game_over:
             if player_hand.get_value() > 21:
                 print("You busted! Dealer Wins 🃏😢")
