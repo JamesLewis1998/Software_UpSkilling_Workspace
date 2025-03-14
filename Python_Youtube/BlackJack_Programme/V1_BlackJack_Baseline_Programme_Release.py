@@ -145,7 +145,8 @@ class Game():
 
             while dealer_hand.get_value() < 17:
                 dealer_hand.add_card(deck.deal(1))
-                dealer_hand.display(show_all_dealer_cards = True)
+                dealer_hand_value = dealer_hand.get_value()
+            dealer_hand.display(show_all_dealer_cards = True)
 
             if self.check_winner(player_hand, dealer_hand):
                 continue
@@ -181,76 +182,8 @@ class Game():
                 print("Player hand smaller than Dealer hand! Dealer Wins!")
             else:
                 print("Player hand equal to Dealer hand! It's a tie!")
-            return True                 # Returns true for game over
+            return True              
         return False
 
 g = Game()
 g.play
-
-# Now we want the user to be able to set the number of games they would like to play
-    # do this in the command terminal
-    # remember how to use input from before 
-    # want to define input as an integer therefore wrap it with int
-
-# Now test this out: 
-    # Note, we can use the try except blocks for error handling when someone for example
-    # inputs a letter or other characters which are not integers in the command line
-    # use a while loop to keep asking the user to enter a number until they do so 
-    # within the try error handling
-        # add in while loop before try and except fields 
-            # Code then runs through these fields while the condition of the invalid input field is true
-        # The code runs the except condition when the while condition is satisfied else it runs the try condition (i.e. games_to_play)
-
-# Now create the new game loop -> this will loop one time per game played
-    # Should look while game number is < games to play
-    # first line of loop should increment the game number by 1
-    # then create deck object and deck variable and shuffle the deck
-
-# Now create a variable called player hand and set it to a hand object
-
-# Now create a for loop which loops through twice 
-    # adding two cards to the dealer and player decks
-
-# Now we need to start returning results into the command window
-    # Start by printing an empty line as above in game class
-    # Now lets print a divider so you have one hand on the left and the other on the right
-    # trick to repetitive printing like this
-    # put quotation in print statmeent and multiply 30 times to repeat
-        # print("repeat"*30)
-    # Now print game number out of the total number of games
-    # Now display the players and the dealers hand
-
-# Once two hands have been dealt, there should already be a winner in the game 
-    # create a method at this point to check if there is a winner
-        # method should take player hand and dealer hand as arguments
-
-# Game will also end if the two players choose not to withdraw more cards
-    # add new argument to check winner method with defualt value
-        # game_over with default value of false
-    # Now create separate if conditions to handle if the game is called and the two players cards need to be relieved
-        # remember once the programme gets to a true, it disregards the rest of the if and elif statements
-
-# Now move back to play method inside while loop
-    # we'll do an if statement and call a check winner function with the player hand and the dealer hand
-    # Add in  if self.check_winner(player_hand, dealer_hand):
-        # continue -> continue just moves to the next iteration of the loop if check_winner returns as false    
-    # within the while game_number < games_to_pay loop
-
-# Inside while loop create a variable called choice and assign empty string
-    # this emulates a player being able to choose until player hands value is over 21
-    # add while loop under choice variable
-    # add .upper to convert whatever the players input is to upper case
-    
-    # If choice is not in the following list choice ["S","STAND"]:
-        # choice not in ["S","STAND"]
-        # continue to hit
-
-    # Add a while loop that keeps looping until the user enters a valid choice
-
-# Now store the value of the players hand in a variable named player_hand_value
-
-# Dealer should continue to add cards to their deck until the value is more than 17
-    # use a while loop and deal card from deck, making sure value is updated
-
-# Now call check winner function one final time with the two hands but this time it should not be in if statement
-    # need to add in 3rd argument of true to indicate the game is over
