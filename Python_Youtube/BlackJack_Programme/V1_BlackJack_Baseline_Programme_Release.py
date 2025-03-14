@@ -1,6 +1,5 @@
 import random   # Import Random Python Module to access random.shuffle function
 
-"""Card Class"""
 class Card:
     def __init__(self,suit,rank): 
         self.suit = suit
@@ -8,7 +7,6 @@ class Card:
     def __str__(self):
         return f"{self.rank['rank'] } of {self.suit}"
 
-"""Deck Class"""
 class Deck: 
     def __init__(self):
         self.cards = []                                     # New variable cards created with empty list assigned
@@ -29,12 +27,11 @@ class Deck:
                 {"rank": "ACE" , "value": 11},
         ]
 
-        """Random Card Generation for Dealer Dealing Cards"""
         for suit in suits:
             for rank in ranks:
                 self.cards.append(Card(suit, rank))          # Append Suit and Rank to empty Card List above 
 
-    """Create a Function to Shuffle and Deal a Card"""
+
     def shuffle(self):
         if len(self.cards) > 1:
             random.shuffle(self.cards)                      # Now shuffle the cards using the random function
@@ -47,7 +44,6 @@ class Deck:
                 cards_dealt.append(card)
         return cards_dealt
 
-"""Hand Class"""
 
 class Hand():
     def __init__(self, dealer = False):
@@ -108,7 +104,6 @@ class Game():
             game_number += 1
             deck = Deck()
             deck.shuffle()
-            number = 2
 
             player_hand = Hand()
             dealer_hand = Hand(dealer=True)
@@ -137,6 +132,7 @@ class Game():
                 if choice in ["HIT","H"]: 
                     player_hand.add_card(deck.deal(1))
                     player_hand.display
+            
             if self.check_winner(player_hand, dealer_hand):
                 continue
             
@@ -152,9 +148,10 @@ class Game():
                 continue
 
             print("Final Results")
-            print(f"Your Hand: {player_hand_value}, Dealers Hand: {dealer_hand_value}")
+            print("Your Hand: {player_hand_value}") 
+            print("Dealers Hand: {dealer_hand_value}")
 
-            self.check_winner(player_hand,dealer_hand, game_over = True)
+            self.check_winner(player_hand,dealer_hand, True)
             
         print("\n Thanks for playing!")
 
