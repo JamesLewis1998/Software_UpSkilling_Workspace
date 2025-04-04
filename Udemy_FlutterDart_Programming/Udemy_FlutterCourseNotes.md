@@ -12,3 +12,17 @@
 -setState() allows you to store variables in the current state
 
 **Round Three Quiz**
+
+- Radios allow for only one selection 
+- Checkboxes allow for multiple selectons
+- Textfield allows the user to enter data
+- Visual style is the difference between a Combobox and a switch
+- We need to use async programming to display date picker because the application is waiting for a user to make a choice
+
+**Round 4 Quiz**
+
+- Footer buttons are an easy way to add widgets to the footer
+    - Note: Navigation bars offer a persistent and convenient way to switch between primary destinations in an app.
+- Scaffold is a programming widget that helps build your application
+- A floating action button is a button that floats over the application
+- Controls in the AppBar allow easy access to common application commands
