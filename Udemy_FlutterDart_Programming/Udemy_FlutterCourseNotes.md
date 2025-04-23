@@ -26,3 +26,10 @@
 - Scaffold is a programming widget that helps build your application
 - A floating action button is a button that floats over the application
 - Controls in the AppBar allow easy access to common application commands
+
+**Round 5 Quiz**
+
+- Snack Bar: An on Screen Display that notifies a user of an event
+- Bottom sheet: a drawer that appears from the botton
+- Dialog: a panel that appears over an existing window
+- Simple Dialog: used for when you want to present the user with options and let them choose
