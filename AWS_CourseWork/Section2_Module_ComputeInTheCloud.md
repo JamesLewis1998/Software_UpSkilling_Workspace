@@ -233,4 +233,4 @@ If from the example above, Consumer One fails, Producer One  does not experience
 
 _**A loosly coupled architecture is exactly what AWS tries to achieve**_
 
-dddd
+ddddccccc
