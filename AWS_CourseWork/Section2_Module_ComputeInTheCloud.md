@@ -217,7 +217,7 @@ The Load Balancer acts as a single point of contact for all incoming web traffic
 
 > Note, ELB and EC2 Auto Scaling are separate servicers which work together tro ensure applications running in Amazon EC2 can provide high performance and scalability
 
-## Messaging and Queuing
+## Messaging and Queuing ##
 
 Definitions: 
 - Queing is defined as placing messaged into a buffer 
@@ -233,4 +233,66 @@ If from the example above, Consumer One fails, Producer One  does not experience
 
 _**A loosly coupled architecture is exactly what AWS tries to achieve**_
 
-ddddccccc
+1. **SQS** -> Amazon Simple Queue Service
+    - Allows you to send/ store or recieve messages between SWCs in AWS Architecture at any time without requiring other services to be available
+2. **SNS** -> Amazon Simple Notification Service
+
+**Note**: Data contained within a message == a payload and is packeted until delivery
+
+**SQS** Queue == where messages are placed until they are processed 
+
+- AWS managers underlying infrastrcuture for you to host these queues
+
+Amazon **SNS** sends out messages to services but also sends out notification to end users (publish and subscribe model)
+
+### Amazon SNS Topic ###
+
+- A channel for messages to be delivered
+- Then you configure the subscribers to that topic and publishe messages for those subscribes 
+    - therefore in practice can send one message to a topic which will then fan out to all the subscribers in a single go
+        - these subscribers can also be end points such as SQS Queues, AWS Lambda Functions, HTTPS  or HTTP web blocks
+
+_Plus SNS can be used to fan out notifications to end users (using mobile push, sms and email)_
+
+## Monolithic Applications vs Microservices ##
+
+Made up of multiple components -> they communicate with each other to transmit data, fulfill request and keep an application running 
+
+Components include: 
+- Databases
+- Servers
+- User Interfaces 
+- Business Login
+
+### Monolithic ###
+
+Monolithic Architecture: when all of these components above are tightly coupled
+
+- In this instance if a single component fails, other components fails and the entire application may fail as a result
+
+![Alt Text](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1745438400/u51dbVyPQVZ_KqeedhQRWw/tincan/fe470bc5add63f94f005d3da17a6db8131e78b9e/assets/CPE%20Digital%20-%20Monolithic%20application.png)
+
+### Microservices ###
+
+Therefore to help maintain application availability, when a single component fails, you can design your application through the use of micro services --> LOOSLY COUPLING APPLICATION COMPONENTS
+
+Here -> if a single component fails, the other continue to work because they are communicating with each other 
+
+Loose coupling prevents entire application from failing 
+
+![Alt Text](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1745438400/u51dbVyPQVZ_KqeedhQRWw/tincan/fe470bc5add63f94f005d3da17a6db8131e78b9e/assets/CPE%20Digital%20-%20Microservices.png)
+
+**IMPORTANT** : Two different services in AWS facilitate application integration
+
+- Amazon SQS
+- Amazon SNS
+
+_**SNS** subscribers can be web servers, email addresses, AWS Lambda Functions and others_
+
+_**SQS** sends store and recieve messages btwn SWCs without losing messages or requireing other servicers to be available_
+
+#### Flow of Events ####
+
+App --> sends message into queue --> service or user retrieves message from queue --> processes it then deletes it from the queue
+
+## Module Two Additional Compute Services ##
