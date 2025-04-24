@@ -1,164 +1,6 @@
 # AWS Computing in the Cloud Module Two #
 
-**EC2**: Elastic Compute Cloud is:
-1. Highly Flexible
-2. Cost Effective 
-3. Quick
-
-## Hardware vs AWS ##
-
-_HARDWARE_
-> Hardware for server set up: Costs Money and is time consuming to set up -> need servers to host your applications and provide the required compute capacity + a lot of time and effort to set up
-
-_AWS_
-> AWS has already built the data centres andcsecured the data centres in conjunction with already provisioning and installing the servers 
-
-## Multi-Tenancy and Hypervisor ##
-
-_Multi-tenancy_ is shared underlying HW between virtual modules 
-
-- Hypervisor is responsble for coordinating this multitenancy and is solely managed by AWS 
-- Isolating VMs from each other is done as they share resources from the host meaning EC2 instances are secure 
-
-## EC2 Instances ##
-
-- EC2 instances can be requested to be launched within minutes and Amazon only charges you for running instances, not stopped or terminated ones
-- EC2 instances are resizable -> this means vertically scaling on instances (and whether they are publically or pirvately accessible)
-- EC2 provides secure resizable compute capacity in the cloud as amazon ec2 instances 
-
-### On-Premise vs EC2 ###
-
-| On-Premise | EC2 |
-|------------|-----|
-|1. HW Purchase | 1. Povision and launch instances in numbers|
-|2. Server Delivery | 2. Stop once finished running work load|
-| 3. Server Information | 3. Pay only for runtime |
-| 4. Config set up | 4. Scalable server capacity vs cost |
-
-_Favourable Solution is the EC2 instances_
-
-## EC2 Three Step Approach ##
-
-**Step One**
-
-Launch an instance -> select template of basic configs 
-
-1. _Launch_: Security settings -> control traffic flowing in and out of your instances 
-2. _Instance_: Instance type -> specific HW config of your instance 
-3. _Config_: OS, App Server and Applications
-
-**Step Two**
-
-Connect -> programmes and applications have different ways to connect directly to instances and exchange data 
-
-- Note for users this could be logging into a computer desktop
-
-**Step Three**
-
-Use -> after connecting your instance you can begin using it
-
-- Including running commands to install SW, add storage, copy and organise files and much more
-
-## Amazon EC2 Instance Types ##
-
-Instances families can be optimised for certain types of tasks and are broken down into the following: 
-
-- General Purpose: balance of compute memory and new resources 
-- Compute Optimised: Gaming Servers high performance computing
-- Memory Optimised
-- Accelerate Comptuing: graphics processing
-- Storage Optimised: workloads requiring high performance on locally stored data 
-
-Here we need to assess clients specific needs of:
-
-1. Compute 
-2. Memory
-3. Storage Capabilities
-
-### General Instances ###
-
-Useful for application servers, gaming servers and small/ medium databases (DBs) 
-
-### Compute Optimised Instances ###
-
-Ideal for compute bound applications benefitting from high-perofrmance processes:
-
-- High performance web servers 
-- compute intensive application server
-- dedidcated gaming servers 
-
-### Memory Optimised Instances ###
-
-1. Fast performance for workloads that process large datasets in memory 
-2. In computing memory -> temporary storage area 
-    - Holds all the data and instrcutiuons that a CPU needs to be able to compute actions
-    - ie before a computer program or application is able to run it is loaded from storage into memory
-    -(Preloading process gives the CPU driver access to the computer programme)
-
-### Accelerated Computing Instances ###
-
-Uses HW accelrators or co-processors to perform the same function more efficiently than is possible in SW running on CPUs
-
-Used for floating point number calculations n, graphics processing and big data analytics
-
-Note a HW accelerator is a component that can expedite data processing
-
-### Storage Optimised Instances ### 
-
-- Workloads that require high sequential capabilities/ write access to large datasets on local storage
-- distirbuted file systems, data warehousing applications and OLTP (online transaction processing systems)
-- IOPS = input/ output operations per second
-    - metric to measure performance of storage device
-
-A storage optimised instance is designed to deliver 10,000s of low latency, random IOPS to Applications
-
-## EC2 Billing Options ## 
-
-1. On Demand
-2. Savings Plan
-3. Reserved Instances
-    - Standard
-    - Convertible
-4. Spot Instances 
-5. Dedicated Hosts
-
-### On Demand Instances ###
-- Ideal for short term irregular workloads that cannot be interupted
-- instance can run continuously until we stop them and only pay for the compute time you use
-
-### Reserved Instances (Standard) ###
-
-- 1 or 3 year purchase option 
-- when you know your EC2 instance type, size you need and which AWS region you plan to run in 
-- Considerations
-    - Instance Type and Sie 
-    - Platform Description (OS)
-    - Tenancy -> model for how EC2 instances are occupied and the HW they run on
-
-### Reserved Instances (Convertible) ###
-
-- Designed for 1 or 3 year contracts 
-- If you need to run instances in different availability zones or different instance types
-
-### EC2 Instance Saving Plans ### 
-
-- Hourly spend commitment on a 1 to 3 year contract
-- Good if you need flexibility in your usage over the duration of the committed term 
-- Unlike reserved instances you do not need to specify up front what EC2 instance type you need, or the OS to run it on and the size or latency requirements with it
-
-### Spot Instances ### 
-
-- Unused EC2 instance capacity and offer up to 90% for on demand prices 
-- HOWEVER
-    - you might need to wait until a spot opens up 
-    - you wil lose your spot if there's higher demand from else where 
-
-### Dedicated Hosts ###
-
-- Physical servers with EC2 instance capacity that is fully dedicated to your use
-- Most expensive out of all of the options for EC2 instances 
-
-## Scaling EC2 Instances ## 
+## Module Two Scaling EC2 Instances  
 
 Scaling and Elasticity are key components to the benefits of EC2
 
@@ -178,7 +20,7 @@ Ie the quote refers to building in redundancy -> high operating system with no s
 
 _AWS Provides AWS Auto-Scaling to enable this to be done automtically 
 
-### AWS Auto Scaling ###
+### AWS Auto Scaling 
 
 1. Dynamic Scaling -> responds to change
 2. Predictive Scaling -> predicts change to respond to and does this according
@@ -198,7 +40,7 @@ When setting an auto scaling group you can set the minimum number of EC2 instanc
 
 All of this enables -> Pay only for the instances you use when you use them [ KEY PRINCIPLE OF EC2 and AWS] -> All promoting a Cost Effective Architecture 
 
-## Direct Traffic with Elastic Load Balancing (ELB) ###
+## Module Two Direct Traffic with Elastic Load Balancing (ELB)
 
 _For AWS environment, if you have multiple EC2 instances (all of which are running the same programme), how does that request know which EC2 instances to go to?_
 
@@ -217,7 +59,7 @@ The Load Balancer acts as a single point of contact for all incoming web traffic
 
 > Note, ELB and EC2 Auto Scaling are separate servicers which work together tro ensure applications running in Amazon EC2 can provide high performance and scalability
 
-## Messaging and Queuing ##
+## Module Two Messaging and Queuing 
 
 Definitions: 
 - Queing is defined as placing messaged into a buffer 
@@ -245,7 +87,7 @@ _**A loosly coupled architecture is exactly what AWS tries to achieve**_
 
 Amazon **SNS** sends out messages to services but also sends out notification to end users (publish and subscribe model)
 
-### Amazon SNS Topic ###
+### Amazon SNS Topic 
 
 - A channel for messages to be delivered
 - Then you configure the subscribers to that topic and publishe messages for those subscribes 
@@ -254,7 +96,7 @@ Amazon **SNS** sends out messages to services but also sends out notification to
 
 _Plus SNS can be used to fan out notifications to end users (using mobile push, sms and email)_
 
-## Monolithic Applications vs Microservices ##
+### Monolithic Applications vs Microservices 
 
 Made up of multiple components -> they communicate with each other to transmit data, fulfill request and keep an application running 
 
@@ -264,7 +106,7 @@ Components include:
 - User Interfaces 
 - Business Login
 
-### Monolithic ###
+#### Monolithic 
 
 Monolithic Architecture: when all of these components above are tightly coupled
 
@@ -272,7 +114,7 @@ Monolithic Architecture: when all of these components above are tightly coupled
 
 ![Alt Text](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1745438400/u51dbVyPQVZ_KqeedhQRWw/tincan/fe470bc5add63f94f005d3da17a6db8131e78b9e/assets/CPE%20Digital%20-%20Monolithic%20application.png)
 
-### Microservices ###
+#### Microservices 
 
 Therefore to help maintain application availability, when a single component fails, you can design your application through the use of micro services --> LOOSLY COUPLING APPLICATION COMPONENTS
 
@@ -291,8 +133,101 @@ _**SNS** subscribers can be web servers, email addresses, AWS Lambda Functions a
 
 _**SQS** sends store and recieve messages btwn SWCs without losing messages or requireing other servicers to be available_
 
-#### Flow of Events ####
+#### Flow of Events 
 
 App --> sends message into queue --> service or user retrieves message from queue --> processes it then deletes it from the queue
 
-## Module Two Additional Compute Services ##
+## Module Two Additional Compute Services
+
+EC2 instances == virtual machines 
+
+You can use these virtual machines on everything from Basic web servers to high performing compute clusters 
+
+When setting up EC2 instances, you are responsible for:
+- ensuring sw updates 
+- Architecting solutions in a highly available manner
+- Managing scaling of those instances
+
+### Serverless Computing 
+
+Serverless solutions means you cannot see or access the underlying infrastructure of your application -> all of this management is taken care for you 
+
+_One option of serverless computing is AWS Lambda_
+
+### AWS Lambda 
+
+AWS Lambda is a servier that lets you run code without needing to provision or manage servers 
+
+Upload your code into a Lamdba Function, configure a trigger and from there the service waits for this trigger to be met to action off of it
+
+Offers the following:
+1. Quick processing 
+2. Web backend 
+3. each invocation <15 mins for completion
+
+**Example of Serverless Event-driven E-commerce microserices architecture:**
+![Alt Text](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*WK_-gPDoCp29u8_MfStF7g.png)
+
+_however if you're still not ready for serverless and want control of the underlying environment, consider Amazon ECS and EKS, both of which are container application tools_
+
+### Containers 
+
+Containers provide you with a standard way to package your applications code and dependencies into a single object
+
+Note these containers run on top of EC2 instances and run in isolation from each other similar to how virtual machines work
+
+Both ECS and EKS can run on top of EC2 instances
+
+**Example One: One Host and Multiple Containers**
+
+![Alt Text](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1745492400/TOq2kE4-V8tghdWQq9FchA/tincan/fe470bc5add63f94f005d3da17a6db8131e78b9e/assets/CPE%20Digital%20-%20Containers%201.png)
+
+**Example Two: Tens of hosts with hundreds of containers**
+![Alt Text](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1745492400/TOq2kE4-V8tghdWQq9FchA/tincan/fe470bc5add63f94f005d3da17a6db8131e78b9e/assets/CPE%20Digital%20-%20Containers%202.png)
+
+### Amazon Elastic Container Service
+
+ECS is a highly scalable, high-performance container management system that enables you to run and scale containerized apps on AWS
+
+Also supports **Docker** containers -> Docker is a sw platform that enables you to build test and deploy your apps quickly 
+
+ECS allows you to use API calls to launch and stop Docker-enabled Apps
+
+_Docker is a widely used platform that uses operating system level virtualization to deliver software in containers_
+
+#### Container Orchestration 
+
+When using docker containers on AWS, processes need to start, stop, restart and be monitored across all EC2 instances in the architecture 
+
+Process of managing these tasks above == container orchestration.
+
+ECS is designed to help you run your containerized applications at scale without the hassle of managing your own container orchestration software. 
+
+_Note number of instances running together is called a cluster_
+
+### Amazon Elastic Kubernetes Service
+
+EKS is a fully managed service that you can use to run Kubernetes on AWS
+
+Note: Kubernetes is an open-source container orchestration platform used to automate the deployment, scaling, and management of containerized applications
+
+In essence, Kubernetes allows you to deploy and manage containerized applications at scale
+
+**Example of Kubernetes Architecture**
+![Alt Text](https://newrelic.com/sites/default/files/styles/1200w/public/2021-05/kubernetes_architecture-1024x649.webp?itok=224Yqhs6)
+
+### AWS Fargate
+
+AWS Fargate is a serverless compute platform for EC2 and ECS (Elastic Container Service)
+
+- When using AWS Fargate, AWS manages your server infrastructure for you. 
+
+## AWS Compute Services Comparison 
+
+| EC2 | AWS Lamdba | ECS/ EKS |
+|---|---|---|
+|1. Host Traditional Applications  | 1. Host Short Running Functions | 1. Run Docker-container based workloads on AWS |
+|2. Full Access to OS (Linux or Windows) | 2. Service Orientated Applications | 2. Choose your Orchestration Tool: ECS or EKS |
+|3. - | 3. Event Driven Applications | 3. Then choose your Platform - either run your containers on EC2 Instances (You Manage) or Serverless (Fargate) that's managed for you |
+|4. - | 4. No provisioning or managing servers | 4. - |
+
