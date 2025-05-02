@@ -33,3 +33,7 @@
 - Bottom sheet: a drawer that appears from the botton
 - Dialog: a panel that appears over an existing window
 - Simple Dialog: used for when you want to present the user with options and let them choose
+
+**Course Certificate**
+
+![Course Cert](/Udemy_FlutterDart_Programming_Notes\FlutterBeginnersCourseCertificate.jpeg)
