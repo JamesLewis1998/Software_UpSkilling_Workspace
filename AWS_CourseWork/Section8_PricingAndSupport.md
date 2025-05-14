@@ -1,5 +1,109 @@
 # Module 8 - Pricing and Support
 
+# Module 8 - Pricing and Support
+
+Introduction: 
+
+- Pricing and Support Models
+- AWS Free Tier
+- Benefits of Consolidated Billing
+- Benefits of Cost Explorer
+- Benefits of pricing calculator
+- distinguish between support plans
+- Benefits of AWS Market Place
+
+## AWS Free Tier
+
+AWS Free tier enables you to begin using certain services without having to worry about incurring costs for a specified period
+
+Three Types:
+1. Always Free -> Eg AWS Lamdba allows limited free requests
+2. 12 months Free -> These offers are free for 12 months following your initial sign-up date to AWS
+3. Trials -> Short-term free trial offers start from the date you activate a particular service
+
+For 12 months after you first sign up for an AWS account, you can take advantage of offers in the 12 Months Free category.
+
+Some other services that qualify under the free tier: 
+
+- Sage Maker 
+- Comprehend Medical
+- Dynamo DB
+- SNS 
+- Cognito
+
+Comprehend Medical: Amazon Comprehend Medical is a HIPAA-eligible natural language processing (NLP) service that uses machine learning that has been pre-trained to understand and extract health data from medical text, such as prescriptions, procedures, or diagnoses.
+
+## AWS Pricing Concepts 
+
+AWS offers a range of cloud computing services with pay-as-you-go pricing.
+
+1. Pay for what you use
+- For each service pay for the amount of resource you actually use
+2. Pay less when you reserve
+- some services offer reservation options that provide significant discounts compared to on-demand instance pricing
+3. Pay with less Volume - volume based discounts when you reserve
+- some services provide tiered pricing so the per unit cost is lower with increased usage
+
+### AWS Pricing Calculator
+
+Explore AWS Services and create an estimate for the cost of your UCs on AWS
+
+ In the AWS Pricing Calculator, you can enter details, such as
+ 
+ - the kind of operating system you need
+ - memory requirements
+ - input/output (I/O) requirements. 
+ 
+ By using the AWS Pricing Calculator, you can review an estimated comparison of different EC2 instance types across AWS Regions.
+
+### AWS Pricing Examples 
+
+#### AWS Lambda
+AWS Lambda charges you based on the number of requests for your functions and the time it takes for them to run 
+
+Allows: 
+- 1 million free requests 
+- 3.2 million seconds of compute time per month
+
+Can save on AWS Lamdba costs by signing up for a Compute Savings Plan
+
+Savings Plan offers lower compute costs in exchange for committing to a consistent amount of usage over a 1 yr or 3 yr term [ Example of Paying less when you reserve]
+
+Example of Pricing Under One Region below Payment Thresholds:
+
+![AWS Pricing Example](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1747213200/1Ltag26Y2ZAD33ahESXuCg/tincan/fe470bc5add63f94f005d3da17a6db8131e78b9e/assets/CPE%20Digital%20-%20Module%208%20-%20AWS%20Lambda%20pricing%20example.png)
+
+#### Amazon EC2
+
+EC2 -> pay for compute time you use whilst instances are running
+
+For some workloads you can reduce EC2 costs by using Spot Instances: only works if your business case can withstand interuptions whilst running the instances
+
+Pricing Example where EBS and ELB are below cost limits:
+
+![ELB and EBS Prices Below Threshold](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1747213200/1Ltag26Y2ZAD33ahESXuCg/tincan/fe470bc5add63f94f005d3da17a6db8131e78b9e/assets/CPE%20Digital%20-%20Module%208%20-%20Amazon%20EC2%20pricing%20example.png)
+
+#### Amazon S3
+
+S3 Pricing Consider the following: 
+
+1. Storage - pay for only the storage you use
+2. Requests and Data Retrievals - Pay for requests made to Amazon S3 objects and buckets
+3. Data Transfer - No data transfer costs betwen S3 and other services within the same AWS Region
+4. Management and Replication -> Pay for storage management features you've enabled on your accounts S3 buckets
+    - These features include Amazon S3 inventory, analytics, and object tagging
+
+## Billing Dashboard
+
+Billing and Cost management dashboard allows you to pay your AWS bill, monitor your usage and analyse and control your costs
+
+- Compare your current month to date balance with the previous month
+- view month to date spending by service
+- view free tier usage by service 
+- access cost explorer and create budgets
+- purchase and manage savings plans
+- publish cost and usage reports 
+
 ## Consolidated Billing
 
 - AWS Organisations contains consolidated billing 
