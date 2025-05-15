@@ -46,4 +46,30 @@ Single or group of data centres == availability zone
 
 - one or more discrete data centres with redundant power, NW'ing and connectivity 
 
+ us-west-1 Region Example: 
 
+![Avaialability Zone](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1747234800/zML0vbrnMYyNv_CQpZLt7g/tincan/fe470bc5add63f94f005d3da17a6db8131e78b9e/assets/availability_zones.png)
+
+EC2 instance running on a virtual machine on a physical HW within an Availability Zone
+
+Each AWS Region contains multiple isolated availability zones -> you don't luanch all of this within a small space of each other in case nautral distasters occur (but not too far away such that the latency increases)
+
+10's of miles and can still keep single digit ms latency
+
+Example of Availability Zone failure: 
+
+![Availability Zone failure](https://explore.skillbuilder.aws/files/a/w/aws_prod1_docebosaas_com/1747234800/zML0vbrnMYyNv_CQpZLt7g/tincan/fe470bc5add63f94f005d3da17a6db8131e78b9e/assets/Multiple_AZ_03.png)
+
+- Here this means if us-west-1a were to fail, your application would still be running in us-west-1b.
+
+#### ELB is a Regional Construct
+
+It runs across all availability zones communicating with all EC2 instances
+
+Any service listed as a Regionally Scoped Service means you have this covered and these services are already highly available (at no additional cost or effort on your part)
+
+Many of the services amazon provide run at regional level across multiple AZs
+
+Note: planning for failure and running across mltiple availability zones is an important part of building a resilient and highly available architecture 
+
+## Edge Locations
