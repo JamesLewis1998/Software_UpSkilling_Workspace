@@ -154,6 +154,10 @@ Note:
 - Amazon Lex is a service that enables you to build conversational interfaces using voice and text.
 - AWS DeepRacer is an autonomous 1/18 scale race car that you can use to test reinforcement learning models
 
+1. A machine learning service that automatically extracts text and data from scanned document describes Amazon Textract.
+2. A document database service that supports MongoDB workloads describes Amazon DocumentDB.
+3. A service that enables you to identify potentially fraudulent online activities describes Amazon Fraud Detector.
+
 ## Module Nine Summary
 
 a. The AWS Cloud Adoption Framework
