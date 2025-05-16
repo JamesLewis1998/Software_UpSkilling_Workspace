@@ -80,6 +80,7 @@ The six pillars of the AWS Well-Architected Framework:
    - Performance efficiency
    - Cost optimization
    - Sustainability
+
 Six advantages of cloud computing:
    - Trade upfront expense for variable expense.
    - Benefit from massive economies of scale.
