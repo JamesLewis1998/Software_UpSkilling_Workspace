@@ -207,7 +207,7 @@ Relational DBs use SQL, to store and query data. SQL == Structured Query Languag
 Can integrate with other AWS Services such as using AWS Lambda to query your db from a serverless application
 
 Many RDS DB engines offer encryption at rest - protecting data when stored and encryption in transit, meaning its protected when being sent or received
-- 
+
 ### RDS DB Engines
 
 Available on six DB engines which optimise memory, performance or input/output (I/O)
