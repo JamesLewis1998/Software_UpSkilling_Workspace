@@ -1,7 +1,6 @@
-import 'package:udemy_dart_module_two/udemy_dart_module_two.dart' as udemy_dart_module_two;
-
+import 'udemy_dart_module_two_comment.dart' as udemy_dart_module_two_comment;
 void main(List<String> arguments) {
-  print('Hello world: ${udemy_dart_module_two.calculate()}!');
+  print('Hello world: ${udemy_dart_module_two_comment.calculate()}!');
 }
 
 // SECTION 2: Variables - Comments
