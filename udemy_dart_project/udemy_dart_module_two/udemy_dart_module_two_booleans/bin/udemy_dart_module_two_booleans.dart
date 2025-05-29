@@ -1,7 +1,7 @@
 
 // main entry point
 main(List<String> arguments) {
-  bool? isOn; // this is a variable - something that will change, opposite to this is a constant
+  var isOn; // this is a variable - something that will change, opposite to this is a constant
   bool isDog = false; 
 
   // We have diff data types 
@@ -36,4 +36,14 @@ main(List<String> arguments) {
   // runtime type vs variable 
     // var means its a generic object
     // runtime type is a mechanism that allows the type of an object to be determined during program execution
+
+  // In computer programming, a variable is a storage location in memory that holds a value, 
+  // while a runtime type refers to the actual type of the data stored within that variable at the moment the program is executing
+
+  isOn = 5;
+  print('isOn is a ${isOn.runtimeType} runtime type');
+
+  // Defined isOn as Var in programme, then change the definition of the variable from bool to int during run time
+  // In terminal prints out isOn as bool then int runtime type
+
   }
