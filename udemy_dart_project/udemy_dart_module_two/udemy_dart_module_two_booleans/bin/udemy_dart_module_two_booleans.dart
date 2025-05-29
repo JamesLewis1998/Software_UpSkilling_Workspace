@@ -31,4 +31,9 @@ main(List<String> arguments) {
 
   // Everything is an object as illustrated by isOn followed by . to expose functions following this
 
+  print('isOn is a ${isOn.runtimeType} runtime type');
+
+  // runtime type vs variable 
+    // var means its a generic object
+    // runtime type is a mechanism that allows the type of an object to be determined during program execution
   }
