@@ -18,9 +18,9 @@
 
 <img src="EC2.png" width="800">
 
-- Will be using genral purpose instance if there's a cloud architecture set up
-- balanced mix of compute, memory, and networking resources. They are ideal for diverse workloads, like web services
-- also ideal for when workload performance is uncertain (as is the case with the web app development)
+- Will be using genral purpose instance if there's a cloud architecture set up - balanced mix of compute, memory, and networking resources
+- How will this compute capacity be set up as needed along with configuration of security, networking and storage?
+- Assume general purpose is planned and there's no demand on the compute capacity being optimised for computation or memory based on web app needs?
 
 ## Computing Services - Serverless Computing
 
@@ -30,8 +30,7 @@ Running of applications without managing the underlying infrastructure
 
 <img src="VM_OS.png" width="800">
 
-- Is there any use of containers to keep the underlying environment consistent an above the web app running on different OSs?
-- How does this work at scale - is there a plan for container orchestration to enable running off of multiple hosts?
+- Is there any use of containers to keep the underlying environment consistent above the web app running on different OSs?
 
 **CI/CD and Containers in Pipeline/ Deployment**
 
@@ -40,6 +39,7 @@ Running of applications without managing the underlying infrastructure
 - CI/CD: using containers enables consistent environment when pushing and deploying code from unit testing to production
 - Is there a proposal in place to ensure consistencing in  deployment to production?
 - Or is the plan to run on different VMs - if so when setting up CI/CD Runners which VM will this run on?
+- What source control mechanisms are proposed for web app deployment - is it to be managed in gitlab or github?
 
 ## IaC Considerations
 
@@ -79,10 +79,11 @@ Running of applications without managing the underlying infrastructure
 <img src="awsdb.png" width="800">
 
 - How will the data for each of the items be contained/ stored?
-    - Multiple RDBs containing PII (Home Address, Profile Images etc.), Financial Security (Card Details,Deposits, etc)
-- Using relational DBs with SQL? (Big data tables)
-- Key-value pair data storage? -> unique keys used as object identifiers
-- Mongo DB tree structure? 
+
+| Relational DBs | None Relational DBs |
+| ---       | ---       |
+| - Multiple RDBs containing PII (Home Address, Profile Images etc.), Financial Security (Card Details,Deposits, etc) | - Key-value pair data storage? -> unique keys used as object identifiers |
+| - Using relational DBs with SQL? (Big data tables) | - Mongo DB tree structure?  |
 
 **Caching Layer Considerations**
 
@@ -90,7 +91,7 @@ Running of applications without managing the underlying infrastructure
 
 - reduce strain on backend dbs by query/ api call reduction
 - Is there content the web application will need to cache to avoid high query rates against DBs?
-- For example, when 800's of customers request the same static data over and over again
+- For example, when 100's of customers request the same static data over and over again
 
 ## Security and Compliance
 
@@ -100,7 +101,8 @@ Running of applications without managing the underlying infrastructure
 
 - Do different DBs need different security protocals in place
 - Protect against DoS attacks and DDoS attacks 
-- Use of firewall against web app to monitor nw requests and check against access control lists to prevent requests from blocked ip address access to the web application
+- Is there a use of a firewall against web app to monitor nw requests and check against access control lists? - identify blocked IP Addresses
+- What Security considerations are in place to protect against this and how will the web app be pen tested to ensure there's no vulnerabilities
 
 ### Domain Name Translation to IP Address 
 
