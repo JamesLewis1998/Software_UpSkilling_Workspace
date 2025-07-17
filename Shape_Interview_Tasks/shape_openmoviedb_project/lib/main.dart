@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';      
 import 'package:http/http.dart' as http;
-import 'package:shape_openmoviedb_project/movie_class.dart';
-import 'package:shape_openmoviedb_project/movie_searchdel.dart';
-import 'package:shape_openmoviedb_project/msseries.dart';
-import 'package:shape_openmoviedb_project/swseries.dart';
-import 'package:shape_openmoviedb_project/hpseries.dart';
+import 'package:shape_openmoviedb_project/class_definition/movie_class.dart';
+import 'package:shape_openmoviedb_project/movie_search/movie_searchdel.dart';
+import 'package:shape_openmoviedb_project/screens/msseries.dart';
+import 'package:shape_openmoviedb_project/screens/swseries.dart';
+import 'package:shape_openmoviedb_project/screens/hpseries.dart';
+import 'package:shape_openmoviedb_project/screens/jbseries.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 buildmovies(List<Movie> movies) {
     return ListView.builder(
@@ -40,10 +42,27 @@ class MyApp extends StatelessWidget {
                                 // Widgets are essentially immutable (unchanging over time) descriptions of parts of the UI
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 58, 131, 183)),),
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue,brightness: Brightness.light,),
+      textTheme: TextTheme(
+          displayLarge: GoogleFonts.pacifico(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            fontStyle: FontStyle.italic
+          ),
+          titleLarge: GoogleFonts.oswald(
+            fontSize: 20,
+          ),
+          bodyMedium: GoogleFonts.merriweather(
+            fontSize: 15,
+          ),
+          displaySmall: GoogleFonts.pacifico(),
+      ),
+      ),
       home: const MyHomePage(
-      title: 'Movie Marathon Series'),
-    );}
+      title: 'Movie Marathon Series',
+      )
+    );
+  }
 }
 
 class MyHomePage extends StatefulWidget {
@@ -65,7 +84,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       );
                   },
             ),
-          title: Text(widget.title),
+          title: Text(
+            widget.title,
+            style: Theme.of(context).textTheme.displayLarge!
+            ),
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           actions: [ 
                 Row(children: [
@@ -84,39 +106,55 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(color: Color.fromARGB(255, 58, 131, 183)),
-            child: Text('Our Standouts'),
-          ),
+          SizedBox(
+                height: 130, // To change the height of DrawerHeader
+                width: double.infinity, // To Change the width of DrawerHeader
+                child: DrawerHeader(
+                  child: Text('Series of Interest',
+                    style: Theme.of(context).textTheme.displayLarge!,
+                  ),
+                ),
+              ),
           ListTile(
-            title: const Text('Marvel Film Franchise'),
+            title: Text('Marvel Film Franchise',
+              style: Theme.of(context).textTheme.titleLarge!,
+            ),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MSPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => msseries()));
             },
           ),
           ListTile(
-            title: const Text('Starwars Film Franchise'),
+            title: Text('Starwars Film Franchise',
+              style: Theme.of(context).textTheme.titleLarge!,),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const StarwarsSeries()),);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const swseries()),);
             },
           ),
           ListTile(
-            title: const Text('Harry Potter Film Franchise'),
+            title: Text('Harry Potter Film Franchise',
+            style: Theme.of(context).textTheme.titleLarge!,),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const HPSeries()),);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const hpseries()),);
+            },
+          ),
+          ListTile(
+            title: Text('James Bond Film Franchise',
+            style: Theme.of(context).textTheme.titleLarge!,),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const jbseries()),);
             },
           ),
         ],
       ),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body: Container(
+        padding: EdgeInsets.all(32.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const Text(
+            Text(
               'Welcome to Movie Marathon Series, a website dedicated to providing the best movie line ups Film Franchises have to offer',
+              style: Theme.of(context).textTheme.bodyMedium!,
             ),
           ],
         ),

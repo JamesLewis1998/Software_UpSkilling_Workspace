@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';      
 import 'package:http/http.dart' as http;
-import 'package:shape_openmoviedb_project/movie_class.dart';
+import 'package:shape_openmoviedb_project/class_definition/movie_class.dart';
 import 'package:shape_openmoviedb_project/main.dart';
 
 
-class MSPage extends StatefulWidget {
-  const MSPage({super.key});
+class hpseries extends StatefulWidget {
+  const hpseries({super.key});
   @override
-  State<MSPage> createState() => _MSPageState();
+  State<hpseries> createState() => _hpseriesState();
 }
 
-class _MSPageState extends State<MSPage> {
+class _hpseriesState extends State<hpseries> {
   Future<List<Movie>> moviesFuture = getMovies();      // Variable to call and store future list of posts
   static Future<List<Movie>> getMovies() async {      // Function to fetch the data with the OMDB movie API
-    var url = Uri.parse("http://www.omdbapi.com/?apikey=[yourkey]&s=marvel&page=1-100");
+    var url = Uri.parse("http://www.omdbapi.com/?apikey=[yourkey]&s=harry+potter&page=1-100");
     final response = await http.get(url, headers: {"Content-Type": "application/json"});
     final List body = json.decode(response.body);
     return body.map((e) => Movie.fromJson(e)).toList();
@@ -22,7 +22,10 @@ class _MSPageState extends State<MSPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Marvel Series'),
+      appBar: AppBar(
+        title: Text('Harry Potter Film Franchise',
+          style: Theme.of(context).textTheme.displayLarge!
+        ),
       actions: [ IconButton(onPressed: () { Navigator. pop(context);} , icon: Icon(Icons.arrow_back))],
         ),
       body:
