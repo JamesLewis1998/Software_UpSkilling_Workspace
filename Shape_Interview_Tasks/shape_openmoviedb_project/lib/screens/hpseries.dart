@@ -26,7 +26,6 @@ class _hpseriesState extends State<hpseries> {
         title: Text('Harry Potter Film Franchise',
           style: Theme.of(context).textTheme.displayLarge!
         ),
-      actions: [ IconButton(onPressed: () { Navigator. pop(context);} , icon: Icon(Icons.arrow_back))],
         ),
       body:
         FutureBuilder (

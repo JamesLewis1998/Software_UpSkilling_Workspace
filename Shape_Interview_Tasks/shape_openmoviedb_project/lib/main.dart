@@ -168,9 +168,11 @@ class UAPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('User Account Page'),
-      actions: [ IconButton(onPressed: () { Navigator. pop(context);} , icon: Icon(Icons.arrow_back))],
-        ),
-      );
+      appBar: AppBar(
+        title:Text('User Account Log In',
+        style: Theme.of(context).textTheme.displayLarge!,
+      ),
+    ),
+  );
   }
 }
