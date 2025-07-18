@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';      
 import 'package:http/http.dart' as http;
+import 'package:google_fonts/google_fonts.dart';
+import 'dart:io';
+import 'package:flutter/services.dart';
 import 'package:shape_openmoviedb_project/class_definition/movie_class.dart';
 import 'package:shape_openmoviedb_project/movie_search/movie_searchdel.dart';
 import 'package:shape_openmoviedb_project/screens/msseries.dart';
 import 'package:shape_openmoviedb_project/screens/swseries.dart';
 import 'package:shape_openmoviedb_project/screens/hpseries.dart';
 import 'package:shape_openmoviedb_project/screens/jbseries.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 buildmovies(List<Movie> movies) {
     return ListView.builder(
@@ -32,7 +34,12 @@ buildmovies(List<Movie> movies) {
     );
   }
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  ByteData data = await PlatformAssetBundle().load('assets/ca/httpcert.pem');
+  SecurityContext.defaultContext.setTrustedCertificatesBytes(data.buffer.asUint8List());
+
   runApp(const MyApp());
 }
 
@@ -120,28 +127,28 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.titleLarge!,
             ),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => msseries()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MSSeries()));
             },
           ),
           ListTile(
             title: Text('Starwars Film Franchise',
               style: Theme.of(context).textTheme.titleLarge!,),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const swseries()),);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SWSeries()),);
             },
           ),
           ListTile(
             title: Text('Harry Potter Film Franchise',
             style: Theme.of(context).textTheme.titleLarge!,),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const hpseries()),);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const HPSeries()),);
             },
           ),
           ListTile(
             title: Text('James Bond Film Franchise',
             style: Theme.of(context).textTheme.titleLarge!,),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const jbseries()),);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const JBSeries()),);
             },
           ),
         ],
@@ -174,5 +181,5 @@ class UAPage extends StatelessWidget {
       ),
     ),
   );
-  }
+    }
 }

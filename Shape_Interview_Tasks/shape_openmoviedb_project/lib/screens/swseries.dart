@@ -4,17 +4,17 @@ import 'package:http/http.dart' as http;
 import 'package:shape_openmoviedb_project/class_definition/movie_class.dart';
 import 'package:shape_openmoviedb_project/main.dart';
 
-class swseries extends StatefulWidget {
-  const swseries({super.key});
+class SWSeries extends StatefulWidget {
+  const SWSeries({super.key});
   @override
-  State<swseries> createState() => _swseriesState();
+  State<SWSeries> createState() => _SWSeriesState();
 }
 
-class _swseriesState extends State<swseries> {
+class _SWSeriesState extends State<SWSeries> {
 
   Future<List<Movie>> moviesFuture = getMovies();      // Variable to call and store future list of posts
   static Future<List<Movie>> getMovies() async {      // Function to fetch the data with the OMDB movie API
-    var url = Uri.parse("http://www.omdbapi.com/?apikey=[yourkey]&s=star+wars&page=1-100");
+    var url = Uri.parse("http://www.omdbapi.com/?i=tt3896198&apikey=a9b67b0f&s=star+wars&page=1-100");
     final response = await http.get(url, headers: {"Content-Type": "application/json"});
     final List body = json.decode(response.body);
     return body.map((e) => Movie.fromJson(e)).toList();
