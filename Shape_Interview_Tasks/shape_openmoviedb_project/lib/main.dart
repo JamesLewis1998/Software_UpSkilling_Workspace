@@ -1,38 +1,12 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';      
-import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
-import 'package:shape_openmoviedb_project/class_definition/movie_class.dart';
 import 'package:shape_openmoviedb_project/movie_search/movie_searchdel.dart';
 import 'package:shape_openmoviedb_project/screens/msseries.dart';
 import 'package:shape_openmoviedb_project/screens/swseries.dart';
 import 'package:shape_openmoviedb_project/screens/hpseries.dart';
 import 'package:shape_openmoviedb_project/screens/jbseries.dart';
-
-buildmovies(List<Movie> movies) {
-    return ListView.builder(
-      itemCount: movies.length,
-      itemBuilder: (context, index) {
-        final movie = movies[index];
-        return Container(
-          color: Colors.grey.shade300,
-          margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-          height: 100,
-          width: double.maxFinite,
-          child: Row(
-            children: [
-              Expanded(flex: 1, child: Text(movie.t!)),
-              SizedBox(width: 10),
-              Expanded(flex: 3, child: Text(movie.plot!)),
-            ],
-          ),
-        );
-      },
-    );
-  }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -141,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
             title: Text('Harry Potter Film Franchise',
             style: Theme.of(context).textTheme.titleLarge!,),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const HPSeries()),);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HPSeries()),);
             },
           ),
           ListTile(

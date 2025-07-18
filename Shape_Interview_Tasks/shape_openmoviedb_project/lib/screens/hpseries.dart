@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';      
-import 'package:http/http.dart' as http;
-import 'package:shape_openmoviedb_project/class_definition/movie_class.dart';
-import 'package:shape_openmoviedb_project/main.dart';
+import 'package:shape_openmoviedb_project/omdb_movie_service/movie_service.dart';
 
 
 class HPSeries extends StatefulWidget {
@@ -12,12 +9,12 @@ class HPSeries extends StatefulWidget {
 }
 
 class _HPSeriesState extends State<HPSeries> {
-  Future<List<Movie>> moviesFuture = getMovies();      // Variable to call and store future list of posts
-  static Future<List<Movie>> getMovies() async {      // Function to fetch the data with the OMDB movie API
-    var url = Uri.parse("http://www.omdbapi.com/?i=tt3896198&apikey=a9b67b0f&s=harry+potter&page=1-100");
-    final response = await http.get(url, headers: {"Content-Type": "application/json"});
-    final List body = json.decode(response.body);
-    return body.map((e) => Movie.fromJson(e)).toList();
+  late Future<List<Movie>> futuremovies;
+  
+  @override
+  void initState() {
+    super.initState();
+    futuremovies = MovieService().getMovies();
   }
   @override
   Widget build(BuildContext context) {
@@ -26,22 +23,36 @@ class _HPSeriesState extends State<HPSeries> {
         title: Text('Harry Potter Film Franchise',
           style: Theme.of(context).textTheme.displayLarge!
         ),
-        ),
-      body:
-        FutureBuilder (
-          future: moviesFuture,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
+      ),
+      body: Center(
+        child: FutureBuilder<List<Movie>>(
+          future: futuremovies,
+          builder: (context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+                return ListView.separated(
+                  itemBuilder: (context, index){
+                    Movie movie = snapshot.data?[index];
+                    return ListTile(
+                      title: Text(movie.t),
+                      subtitle: Text(movie.plot),
+                    );
+                  },
+                  separatorBuilder: (context, index){
+                    return const Divider(color: Colors.black);
+                  },
+                  itemCount: snapshot.data!.length
+                );
+            } else if (snapshot.connectionState == ConnectionState.waiting) {
                 return CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),);
-            } else if (snapshot.hasData) {
-              final movies = snapshot.data!;
-                return buildmovies(movies);
+            } else if (snapshot.data() == null) {
+                return Text("Snapshot Data is Null");
             } else {
-                return const Text("No data available");
+                return Text("ERROR: ${snapshot.error}");
             }
           }
         )
-      );
+      )
+    );
   }
 }
