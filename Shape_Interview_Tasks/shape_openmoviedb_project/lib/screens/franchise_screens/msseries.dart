@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shape_openmoviedb_project/omdb_movie_service/movie_class.dart';
 import 'package:shape_openmoviedb_project/omdb_movie_service/movie_service.dart';
-import 'package:shape_openmoviedb_project/screens/franchise_screens/jbseries.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:developer' as developer;
 import 'dart:io';

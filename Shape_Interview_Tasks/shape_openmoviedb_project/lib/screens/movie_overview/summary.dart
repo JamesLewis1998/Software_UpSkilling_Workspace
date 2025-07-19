@@ -9,14 +9,7 @@ class Summary extends StatefulWidget {
   State<Summary> createState() => _SummaryState();
 }
 
-class Summary extends State<Summary> {
-  final omdbapi = "http://www.omdbapi.com/?apikey=a9b67b0f&s=harry+potter";
-  late Future<List<Movie>> futuremovies;
-  @override
-  void initState() {
-    super.initState();
-    futuremovies = MovieService().getMovies(omdbapi);
-  }
+class _SummaryState extends State<Summary> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

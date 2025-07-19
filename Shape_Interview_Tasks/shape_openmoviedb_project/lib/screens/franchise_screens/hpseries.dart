@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 
 void hpseries() async {
   WidgetsFlutterBinding.ensureInitialized();
-  ByteData data = await PlatformAssetBundle().load('assets/ca/httpcert.pem');
+  ByteData data = await PlatformAssetBundle().load('assets/ca/htppcert_hpseries.pem');
   SecurityContext.defaultContext.setTrustedCertificatesBytes(data.buffer.asUint8List());
   runApp(const HPSeries());
 }
@@ -20,7 +20,7 @@ class HPSeries extends StatefulWidget {
 }
 
 class _HPSeriesState extends State<HPSeries> {
-  final omdbapi = "http://www.omdbapi.com/?apikey=a9b67b0f&s=harry+potter&p=3";
+  final omdbapi = "http://www.omdbapi.com/?apikey=a9b67b0f&s=harry+potter";
   late Future<List<Movie>> futuremovies;
   @override
   void initState() {
@@ -33,12 +33,12 @@ class _HPSeriesState extends State<HPSeries> {
       appBar: AppBar(
         title: Text('Harry Potter Film Franchise',
           style: GoogleFonts.hennyPenny(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
+            fontSize: 40,
             fontStyle: FontStyle.italic
+          )
         ),
       ),
-      ),
+    
       body: Center(
         child: FutureBuilder<List<Movie>>(
           future: futuremovies,
