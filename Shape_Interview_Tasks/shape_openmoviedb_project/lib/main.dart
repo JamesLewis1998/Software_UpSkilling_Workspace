@@ -3,17 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:shape_openmoviedb_project/movie_search/movie_searchdel.dart';
-import 'package:shape_openmoviedb_project/screens/msseries.dart';
-import 'package:shape_openmoviedb_project/screens/swseries.dart';
-import 'package:shape_openmoviedb_project/screens/hpseries.dart';
-import 'package:shape_openmoviedb_project/screens/jbseries.dart';
-
+import 'package:shape_openmoviedb_project/screens/franchise_screens/msseries.dart';
+import 'package:shape_openmoviedb_project/screens/franchise_screens/swseries.dart';
+import 'package:shape_openmoviedb_project/screens/franchise_screens/hpseries.dart';
+import 'package:shape_openmoviedb_project/screens/franchise_screens/jbseries.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   ByteData data = await PlatformAssetBundle().load('assets/ca/httpcert.pem');
   SecurityContext.defaultContext.setTrustedCertificatesBytes(data.buffer.asUint8List());
-
   runApp(const MyApp());
 }
 
@@ -36,7 +33,9 @@ class MyApp extends StatelessWidget {
           bodyMedium: GoogleFonts.merriweather(
             fontSize: 15,
           ),
-          displaySmall: GoogleFonts.pacifico(),
+          displaySmall: GoogleFonts.pacifico(
+            fontSize: 10, 
+          ),
       ),
       ),
       home: const MyHomePage(

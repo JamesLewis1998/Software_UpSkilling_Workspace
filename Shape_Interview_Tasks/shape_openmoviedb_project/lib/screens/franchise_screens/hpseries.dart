@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:shape_openmoviedb_project/omdb_movie_service/movie_class.dart';
 import 'package:shape_openmoviedb_project/omdb_movie_service/movie_service.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'dart:developer' as developer;
+import 'dart:io';
+import 'package:flutter/services.dart';
 
+void hpseries() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  ByteData data = await PlatformAssetBundle().load('assets/ca/httpcert.pem');
+  SecurityContext.defaultContext.setTrustedCertificatesBytes(data.buffer.asUint8List());
+  runApp(const HPSeries());
+}
 
 class HPSeries extends StatefulWidget {
   const HPSeries({super.key});
@@ -9,32 +20,42 @@ class HPSeries extends StatefulWidget {
 }
 
 class _HPSeriesState extends State<HPSeries> {
+  final omdbapi = "http://www.omdbapi.com/?apikey=a9b67b0f&s=harry+potter&p=3";
   late Future<List<Movie>> futuremovies;
-  
   @override
   void initState() {
     super.initState();
-    futuremovies = MovieService().getMovies();
+    futuremovies = MovieService().getMovies(omdbapi);
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Harry Potter Film Franchise',
-          style: Theme.of(context).textTheme.displayLarge!
+          style: GoogleFonts.hennyPenny(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            fontStyle: FontStyle.italic
         ),
+      ),
       ),
       body: Center(
         child: FutureBuilder<List<Movie>>(
           future: futuremovies,
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
+                developer.log('$futuremovies', name: 'Movie.Display.HP');
                 return ListView.separated(
                   itemBuilder: (context, index){
                     Movie movie = snapshot.data?[index];
                     return ListTile(
-                      title: Text(movie.t),
-                      subtitle: Text(movie.plot),
+                      title: Text(movie.title,
+                      style: Theme.of(context).textTheme.bodyMedium!
+                      ),
+                      visualDensity: VisualDensity(vertical: 2), 
+                      subtitle: Text(movie.year,
+                      style: Theme.of(context).textTheme.displaySmall!),
+                      trailing: Icon(Icons.arrow_forward_ios),
                     );
                   },
                   separatorBuilder: (context, index){
@@ -45,10 +66,9 @@ class _HPSeriesState extends State<HPSeries> {
             } else if (snapshot.connectionState == ConnectionState.waiting) {
                 return CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),);
-            } else if (snapshot.data() == null) {
-                return Text("Snapshot Data is Null");
             } else {
-                return Text("ERROR: ${snapshot.error}");
+                developer.log('$futuremovies', name: 'Movie.Display.HP');
+                return Text("ERROR: ${snapshot.error} and Snapshot Data = ${snapshot.data}");
             }
           }
         )

@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:shape_openmoviedb_project/omdb_movie_service/movie_class.dart';
 import 'package:shape_openmoviedb_project/omdb_movie_service/movie_service.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'dart:developer' as developer;
+import 'dart:io';
+import 'package:flutter/services.dart';
+
+void swseries() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  ByteData data = await PlatformAssetBundle().load('assets/ca/httpcert.pem');
+  SecurityContext.defaultContext.setTrustedCertificatesBytes(data.buffer.asUint8List());
+  runApp(const SWSeries());
+}
 
 class SWSeries extends StatefulWidget {
   const SWSeries({super.key});
@@ -8,13 +20,12 @@ class SWSeries extends StatefulWidget {
 }
 
 class _SWSeriesState extends State<SWSeries> {
-
+  final omdbapi = "http://www.omdbapi.com/?apikey=a9b67b0f&s=star+wars";
   late Future<List<Movie>> futuremovies;
-  
   @override
   void initState() {
     super.initState();
-    futuremovies = MovieService().getMovies();
+    futuremovies = MovieService().getMovies(omdbapi);
   }
   @override
   Widget build(BuildContext context) {
@@ -33,8 +44,8 @@ class _SWSeriesState extends State<SWSeries> {
                   itemBuilder: (context, index){
                     Movie movie = snapshot.data?[index];
                     return ListTile(
-                      title: Text(movie.t),
-                      subtitle: Text(movie.plot),
+                      title: Text(movie.title),
+                      subtitle: Text(movie.year),
                     );
                   },
                   separatorBuilder: (context, index){
@@ -46,7 +57,7 @@ class _SWSeriesState extends State<SWSeries> {
                 return CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),);
             } else {
-                return Text("ERROR: ${snapshot.error}");
+                return Text("ERROR: ${snapshot.error} and Snapshot Data = ${snapshot.data}");
             }
           }
         )
